@@ -24,13 +24,40 @@ const imgSrc = [
     },
     {
         page: 'home-page',
+        logo:"../assets/img/logo-ct.png",
+        team_2: "../assets/img/team-2.jpg",
+        logo_spotify: "../assets/img/small-logos/logo-spotify.svg",
+        us:"../assets/img/icons/flags/US.png",
+        de:"../assets/img/icons/flags/DE.png",
+        gb:"../assets/img/icons/flags/GB.png",
+        br:"../assets/img/icons/flags/BR.png"
 
     },
     {
-        page: 'notification'
+        page: 'notification',
+        logo:"../assets/img/logo-ct.png",
+        team_2:"../assets/img/team-2.jpg",
+        logo_spotify:"../assets/img/small-logos/logo-spotify.svg"
+
     },
     {
-        page: 'profile'
+        page: 'profile',
+        logo:"../assets/img/logo-ct.png",
+        team_2: "../assets/img/team-2.jpg",
+        logo_spotify: "../assets/img/small-logos/logo-spotify.svg",
+        bruce_mars:"../assets/img/bruce-mars.jpg",
+        kal_visuals_square:"../assets/img/kal-visuals-square.jpg",
+        marie:"../assets/img/marie.jpg",
+        ivana_square:"../assets/img/ivana-square.jpg",
+        team_4:"../assets/img/team-4.jpg",
+        team_3: "../assets/img/team-3.jpg",
+        home_decor_1:"../assets/img/home-decor-1.jpg",
+        team_1:"../assets/img/team-1.jpg",
+        home_decor_2:"../assets/img/home-decor-2.jpg",
+        home_decor_3:"../assets/img/home-decor-3.jpg",
+        photo:"https://images.unsplash.com/photo-1606744824163-985d376605aa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+
+
     },
     {
         page: 'sign-in'
@@ -39,7 +66,19 @@ const imgSrc = [
         page: 'sign-up'
     },
     {
-        page: 'tables'
+        page: 'tables',
+        logo:"../assets/img/logo-ct.png",
+        team_2: "../assets/img/team-2.jpg",
+        logo_spotify: "../assets/img/small-logos/logo-spotify.svg",
+        team_3: "../assets/img/team-3.jpg",
+        team_4: "../assets/img/team-4.jpg",
+        asana: "../assets/img/small-logos/logo-asana.svg",
+        github:"../assets/img/small-logos/github.svg",
+        atlassian:"../assets/img/small-logos/logo-atlassian.svg",
+        bootstrap:"../assets/img/small-logos/bootstrap.svg",
+        slack:"../assets/img/small-logos/logo-slack.svg",
+        detvo:"../assets/img/small-logos/devto.svg",
+
     }
 ]
 
