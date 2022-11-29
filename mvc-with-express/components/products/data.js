@@ -70,6 +70,7 @@ const data = [
         banner_3: '../img/banner/banner-3.jpg',
         compare: '../img/icon/compare.png',
         product_sale: '../img/product-sale.png',
+        calendar: '../img/icon/calendar.png'
     },
 
     {
