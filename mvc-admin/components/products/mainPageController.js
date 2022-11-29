@@ -1,7 +1,8 @@
 const service = require('./Service');
 
 exports.get_HomePage = (req,res) => {
-    res.render('products/home-page');
+    const page = service.getByPage('home-page');
+    res.render('products/home-page', page);
 }
 exports.get_Pages = (req,res) => {
     //res.render('products/list');
