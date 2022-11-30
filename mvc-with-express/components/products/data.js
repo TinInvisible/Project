@@ -1,4 +1,4 @@
-const data = [
+const imgSrc = [
     {
         page: 'about',
         search: '../img/icon/search.png',
@@ -106,11 +106,7 @@ const data = [
         cart_2: '../img/shopping-cart/cart-2.jpg',
         cart_3: '../img/shopping-cart/cart-3.jpg',
         cart_4: '../img/shopping-cart/cart-4.jpg'
-    },
-
-    {
-        page: 'layout',
-        footer_logo: '../img/footer-logo.png',
-        payment: '../img/payment.png',
-    }
+    }  
 ]
+
+exports.imgSrc = imgSrc;

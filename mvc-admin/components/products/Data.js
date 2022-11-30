@@ -34,7 +34,7 @@ const imgSrc = [
 
     },
     {
-        page: 'notification',
+        page: 'notifications',
         logo:"../assets/img/logo-ct.png",
         team_2:"../assets/img/team-2.jpg",
         logo_spotify:"../assets/img/small-logos/logo-spotify.svg"
