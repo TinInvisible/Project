@@ -1,13 +1,13 @@
 const { connecttion } = require('../../db');
 const productRepository = require('./productsRepository');
 
-exports.getAll = () => {
-  return imgSrc;
-};
+// exports.getAll = () => {
+//   return imgSrc;
+// };
 
-exports.getByPage = (page) => {
-  return imgSrc.find((img_src) => img_src.page === page);
-};
+// exports.getByPage = (page) => {
+//   return imgSrc.find((img_src) => img_src.page === page);
+// };
 
 
 exports.getAll = () => {
