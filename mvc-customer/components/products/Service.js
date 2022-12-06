@@ -1,5 +1,5 @@
 const { connection } = require('../../db');
-const productRepository = require('./productRepository');
+const productRepository = require('./productsRepository');
 
 exports.getAll = () => {
   return productRepository.getAll();
