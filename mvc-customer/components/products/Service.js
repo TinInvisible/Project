@@ -1,9 +1,13 @@
-const { imgSrc } = require('./data');
+const { connection } = require('../../db');
+const productRepository = require('./productRepository');
 
 exports.getAll = () => {
-  return imgSrc;
-};
+  return productRepository.getAll();
+}
 
-exports.getByPage = (page) => {
-  return imgSrc.find((img_src) => img_src.page === page);
-};
+exports.filter = (name) => {
+  return productRepository.filter(name);
+}
+
+
+exports.get = (id) => productRepository.get(id);
