@@ -21,7 +21,7 @@
 //   const result = await db.connection.execute('SELECT * FROM Category');
 //   console.log(result[0]);
 // })();
-// module.exports = db;
+//module.exports = db;
 
 const mysql = require('mysql2/promise');
 
@@ -32,8 +32,8 @@ async function connect_database() {
     db.connection = await mysql.createConnection({
         host: 'localhost',
         user: 'root',
-        password: 'quocthang1802',
-        database: 'web'
+        password: 'T!nInvisible123',
+        database: 'customer_products'
     });
     console.log('Database connected!');
 };
@@ -43,3 +43,5 @@ async function connect_database() {
     const result = await db.connection.execute('SELECT * FROM product');
     console.log(result[0]);
 })();
+
+module.exports = db;

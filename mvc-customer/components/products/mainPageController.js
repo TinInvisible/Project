@@ -19,7 +19,3 @@ exports.details = async (req, res, next) => {
   if (!product) return next(createError(404));
   res.render('products/shop-details', {product});
 };
-
-exports.list = async (req, res) =>{
-  res.render('products/shop');
-}
