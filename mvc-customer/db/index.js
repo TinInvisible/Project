@@ -1,47 +1,18 @@
 // get the client
-// const mysql = require('mysql2/promise');
-
-// const db = {connection: null};
-
-// (async () => {
-//   // create the connection to database
-//   db.connection = await mysql.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     database: 'web',
-//     password: "quocthang1802"
-//   });
-//   console.log('Database connected!');
-// })();
-
-
-
-// (async () => {
-//   await connect_database();
-//   const result = await db.connection.execute('SELECT * FROM Category');
-//   console.log(result[0]);
-// })();
-//module.exports = db;
-
 const mysql = require('mysql2/promise');
 
-const db = { connection: null };
-
-async function connect_database() {
-    // create the connection to database
-    db.connection = await mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: 'T!nInvisible123',
-        database: 'customer_products'
-    });
-    console.log('Database connected!');
-};
+const db = {connection: null};
 
 (async () => {
-    await connect_database();
-    const result = await db.connection.execute('SELECT * FROM product');
-    console.log(result[0]);
+  // create the connection to database
+  db.connection = await mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    database: 'customer_products',
+    password: 'T!nInvisible123'
+  });
+  console.log('Database connected!');
 })();
+
 
 module.exports = db;

@@ -2,7 +2,7 @@
 const db = require('../../db');
 
 exports.getAll = async () => {
-  const result =  await db.connection.execute('SELECT * FROM customer_products.product');
+  const result =  await db.connection.execute('select * from customer_products.product');
   return result[0];
 }
 
