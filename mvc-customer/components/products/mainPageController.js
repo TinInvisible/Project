@@ -20,6 +20,6 @@ exports.details = async (req, res, next) => {
   res.render('products/shop-details', {product});
 };
 
-exports.list = async (req, res) =>{
+exports.lists = async (req, res) =>{
   res.render('products/home-page');
 }
