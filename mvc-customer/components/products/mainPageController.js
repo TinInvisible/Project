@@ -21,5 +21,5 @@ exports.details = async (req, res, next) => {
 };
 
 exports.list = async (req, res) =>{
-  res.render('products/home-page');
+  res.render('products/shop');
 }
