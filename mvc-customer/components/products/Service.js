@@ -26,3 +26,25 @@ exports.filter5 = (name) => {
 }
 
 exports.get = (id) => productRepository.get(id);
+
+
+exports.sortByPriceAsc =() =>  {
+  return productRepository.sortByPriceAsc();
+}
+
+
+exports.sortByPriceDesc =() =>  {
+  return productRepository.sortByPriceDesc();
+}
+
+
+exports.sortByNameDesc =() =>  {
+  return productRepository.sortByNameDesc();
+}
+
+
+exports.sortByNameAsc =() =>  {
+  return productRepository.sortByNameAsc();
+}
+
+

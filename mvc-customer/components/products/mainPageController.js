@@ -45,3 +45,8 @@ exports.detail = (req, res) =>
 {
   res.render('products/shop-details');
 }
+
+
+exports.sortByPriceAsc = async(req,res,next)=>{
+
+}
