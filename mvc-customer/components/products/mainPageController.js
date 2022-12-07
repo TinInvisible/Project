@@ -48,12 +48,28 @@ exports.list = async (req, res) => {
   res.render('products/shop', { products, originalUrl: `${req.baseUrl}?${qs.stringify(withoutSort)}` });
 };
 
+function get_Category(list, id) {
+  let arr = [];
+  let i = 0;
+  for (; i < list.length; i++) {
+    if (list[i]['ProductID'] == id)
+      break;
+  }
+  for (let j = 0; j<list.length;j++) {
+    if (j!=i && list[i]['Category'] ==list[j]['Category'] ){
+      arr.push(list[j]);
+    }
+  }
+  return arr;
+}
 exports.details = async (req, res, next) => {
   const { ProductID } = req.params;
   let products = [];
-  console.log(ProductID);
+  let arr = [];
   const product = await productService.get(ProductID);
-  products = await productService.filter1(ProductID);
+  products = await productService.getAll();
+  arr = get_Category(products,ProductID);
+  console.log(arr);
   if (!product) return next(createError(404));
-  res.render('products/shop-details', { product, products });
+  res.render('products/shop-details', {product,arr});
 };
