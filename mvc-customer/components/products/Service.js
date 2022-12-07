@@ -37,3 +37,25 @@ exports.sort_name_dsc = () => {
   return productRepository.sort_name_dsc();
 }
 exports.get = (id) => productRepository.get(id);
+
+
+exports.sortByPriceAsc =() =>  {
+  return productRepository.sortByPriceAsc();
+}
+
+
+exports.sortByPriceDesc =() =>  {
+  return productRepository.sortByPriceDesc();
+}
+
+
+exports.sortByNameDesc =() =>  {
+  return productRepository.sortByNameDesc();
+}
+
+
+exports.sortByNameAsc =() =>  {
+  return productRepository.sortByNameAsc();
+}
+
+
