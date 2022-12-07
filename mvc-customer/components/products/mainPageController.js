@@ -20,6 +20,7 @@ exports.list = async (req, res) => {
 
 exports.details = async (req, res, next) => {
   const { ProductID } = req.params;
+  console.log(ProductID);
   const product = await productService.get(ProductID);
   if (!product) return next(createError(404));
   res.render('products/shop-details', { product });
