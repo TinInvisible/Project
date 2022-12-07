@@ -7,15 +7,15 @@ exports.getAll = async () => {
 }
 
 exports.filter = async (name) => {
-  const result =  await db.connection.execute("SELECT * FROM customer_products.product where ProductName like ?", [`%${name}%`]);
+  const result =  await db.connection.execute("SELECT * FROM customer_products.product_details where ProductName like ?", [`%${name}%`]);
   return result[0];
 }
 exports.filter1 = async (name) => {
-  const result =  await db.connection.execute("SELECT * FROM customer_products.product where CategoryID = ?", [name]);
+  const result =  await db.connection.execute("SELECT * FROM customer_products.product_details where CategoryID = ?", [name]);
   return result[0];
 }
 
 exports.get = async (id) => {
-  const result =  await db.connection.execute('SELECT * FROM customer_products.product where ProductID = ?', [id]);
+  const result =  await db.connection.execute("SELECT * FROM customer_products.product_details where ProductID = ?", [id]);
   return result[0][0];
 }
