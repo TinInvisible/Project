@@ -8,13 +8,9 @@ exports.list = async (req, res) => {
   let products = [];
   if (nameFilter) {
     products = await productService.filter(nameFilter);
-    if (category)
-    products = await productService.filter1(category);
   }
   else if (category){
     products = await productService.filter1(category);
-    if (nameFilter)
-    products = await productService.filter1(nameFilter);
   }
   else
     products = await productService.getAll();
