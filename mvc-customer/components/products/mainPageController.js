@@ -24,3 +24,7 @@ exports.details = async (req, res, next) => {
   if (!product) return next(createError(404));
   res.render('products/shop-details', { product });
 };
+exports.detail = (req, res) =>
+{
+  res.render('products/shop-details');
+}
