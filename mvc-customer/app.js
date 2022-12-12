@@ -3,12 +3,20 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
+const session = require('express-session');
 
 const productRouter = require('./routes/index.js');
-const homePageRouter = require('./routes/home-page-route.js')
+const homePageRouter = require('./routes/home-page-route.js');
+const authRouter = require('./components/auth');
+const passport = require('./components/auth/passport');
 const app = express();
 
+app.use(session({
+  secret: 'very secret keyboard cat',
+  resave: false,
+  saveUninitialized: false,
+}));
+app.use(passport.authenticate('session'));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -24,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/home-page/shop', productRouter);
 app.use('/home-page', homePageRouter);
+app.use('/auth', authRouter);
 // app.use('/shop', productRouter);
 // catch 404 and forward to error handler
 app.use(function(req,

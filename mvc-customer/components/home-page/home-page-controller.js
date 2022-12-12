@@ -4,3 +4,5 @@ exports.link_to = (req,res) => {
 exports.getHomePage = (req,res) => {
     res.render('products/home-page');
 }
+
+

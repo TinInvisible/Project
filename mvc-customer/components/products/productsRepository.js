@@ -47,6 +47,6 @@ exports.sort_name_dsc = async () => {
   return result[0];
 }
 exports.get = async (id) => {
-  const result =  await db.connection.execute("SELECT * FROM customer_products.productdetail where ProductID = ?", [id]);
+  const result =  await db.connection.execute("SELECT * FROM productdetail where ProductID = ?", [id]);
   return result[0][0];
 }
