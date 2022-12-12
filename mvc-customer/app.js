@@ -9,6 +9,9 @@ const productRouter = require('./routes/index.js');
 const homePageRouter = require('./routes/home-page-route.js');
 const authRouter = require('./components/auth');
 const passport = require('./components/auth/passport');
+
+
+
 const app = express();
 
 app.use(session({
@@ -29,6 +32,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(function(req, res, next) {
+  res.locals.user = req.user;
+  next();
+});
 
 app.use('/home-page/shop', productRouter);
 app.use('/home-page', homePageRouter);
