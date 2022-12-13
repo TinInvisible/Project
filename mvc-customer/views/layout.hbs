@@ -13,21 +13,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
         rel="stylesheet">
     <!-- Css Styles -->
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../css/elegant-icons.css">
-    <link rel="stylesheet" href="../../css/magnific-popup.css">
-    <link rel="stylesheet" href="../../css/nice-select.css">
-    <link rel="stylesheet" href="../../css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../../css/slicknav.min.css">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../css/elegant-icons.css">
+    <link rel="stylesheet" href="../../../css/magnific-popup.css">
+    <link rel="stylesheet" href="../../../css/nice-select.css">
+    <link rel="stylesheet" href="../../../css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../../css/slicknav.min.css">
+    <link rel="stylesheet" href="../../../css/style.css">
 
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
 
     <!-- Nucleo Icons -->
-    <link href="../css/nucleo-icons.css" rel="stylesheet" />
-    <link href="../css/nucleo-svg.css" rel="stylesheet" />
+    <link href="../../css/nucleo-icons.css" rel="stylesheet" />
+    <link href="../../css/nucleo-svg.css" rel="stylesheet" />
 
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
@@ -36,7 +36,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 
 
-    <link id="pagestyle" href="../css/material-dashboard.css?v=3.0.4" rel="stylesheet" />
+    <link id="pagestyle" href="../../css/material-dashboard.css?v=3.0.4" rel="stylesheet" />
 </head>
 
 <body>
@@ -83,7 +83,7 @@
                             <div class="header__top__links">
                                 <div class="ml-auto">
                                     {{#if user}}
-                                    <div>Welcome <a href="/home-page/{{user.id}}" class="us_name">{{user.name}}!</a>, <a href="/auth/logout">Logout</a></div>
+                                    <div>Welcome <a href="/home-page/profile/{{user.id}}" class="us_name">{{user.name}}!</a>, <a href="/auth/logout">Logout</a></div>
                                     {{else}}
                                     <a href="/auth/login" class="nav-item nav-link">Login</a>
                                     <a href="/auth/register" class="nav-item nav-link">Register</a>
@@ -180,10 +180,10 @@
         </div>
         <!-- Search End -->
         <!-- Js Plugins -->
-        <script src="../js/core/popper.min.js"></script>
-        <script src="../js/core/bootstrap.min.js"></script>
-        <script src="../js/plugins/perfect-scrollbar.min.js"></script>
-        <script src="../js/plugins/smooth-scrollbar.min.js"></script>
+        <script src="../../../js/core/popper.min.js"></script>
+        <script src="../../../js/core/bootstrap.min.js"></script>
+        <script src="../../../js/plugins/perfect-scrollbar.min.js"></script>
+        <script src="../../../js/plugins/smooth-scrollbar.min.js"></script>
         <script>
             var win = navigator.platform.indexOf('Win') > -1;
             if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -199,18 +199,18 @@
 
 
         <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-        <script src="../js/material-dashboard.min.js?v=3.0.4"></script>
-        <script src="../../js/jquery-3.3.1.min.js"></script>
-        <script src="../../js/bootstrap.min.js"></script>
-        <script src="../../js/jquery.nice-select.min.js"></script>
-        <script src="../../js/jquery.nicescroll.min.js"></script>
-        <script src="../../js/jquery.magnific-popup.min.js"></script>
-        <script src="../../js/jquery.countdown.min.js"></script>
-        <script src="../../js/jquery.slicknav.js"></script>
-        <script src="../../js/mixitup.min.js"></script>
-        <script src="../../js/owl.carousel.min.js"></script>
-        <script src="../../js/main.js"></script>
-        <script src="../../js/myJavaScript.js"></script>
+        <script src="../../../js/material-dashboard.min.js?v=3.0.4"></script>
+        <script src="../../../js/jquery-3.3.1.min.js"></script>
+        <script src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/jquery.nice-select.min.js"></script>
+        <script src="../../../js/jquery.nicescroll.min.js"></script>
+        <script src="../../../js/jquery.magnific-popup.min.js"></script>
+        <script src="../../../js/jquery.countdown.min.js"></script>
+        <script src="../../../js/jquery.slicknav.js"></script>
+        <script src="../../../js/mixitup.min.js"></script>
+        <script src="../../../js/owl.carousel.min.js"></script>
+        <script src="../../../js/main.js"></script>
+        <script src="../../../js/myJavaScript.js"></script>
         <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
 </body>
 

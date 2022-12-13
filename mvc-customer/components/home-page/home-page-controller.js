@@ -16,9 +16,6 @@ exports.getProFile = async (req, res, next) => {
 }
 exports.editProfile = async (req, res, next) => {
     const { id } = req.params;
-    const user = await service.getID(id);
-    if (!user) return next(createError(404));
-
     const { name } = req.body;
     const { age } = req.body;
     const { gender } = req.body;
@@ -32,5 +29,8 @@ exports.editProfile = async (req, res, next) => {
     else if(gender){
         await service.change_gender(gender,id);
     }
+  
+    const user = await service.getID(id);
+    if (!user) return next(createError(404));
     res.render('products/profile', { user });
 }
