@@ -16,5 +16,5 @@ exports.getUserByEmail = async (email) => {
 
 
 exports.insertUser = async (fullName, email, password) => {
-  await db.connection.execute('INSERT INTO users (`email`,`password`,`name`) VALUES (?,?,?)', [email, password, fullName]);
+  await db.connection.execute('INSERT INTO customer_products.users (email,password,name) VALUES (?,?,?)', [email, password, fullName]);
 };

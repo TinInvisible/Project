@@ -8,6 +8,7 @@ exports.register = async (fullName, email, password) => {
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(password, salt);
   return authRepository.insertUser(fullName, email, hash);
+  console.log("da dang ky");
 }
 
 /**
