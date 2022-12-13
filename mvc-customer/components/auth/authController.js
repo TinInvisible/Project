@@ -24,7 +24,7 @@ exports.register = async (req, res) => {
     res.render('auth/register', { error: e.message });
     return;
   }
-  res.redirect('/');
+  res.redirect('/home-page');
 };
 
 exports.showLoginForm = (req, res) => {
@@ -36,6 +36,6 @@ exports.logout = (req, res) => {
     if (err) {
       return next(err);
     }
-    res.redirect('/');
+    res.redirect('/home-page');
   });
 };

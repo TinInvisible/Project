@@ -69,7 +69,6 @@ exports.details = async (req, res, next) => {
   const product = await productService.get(ProductID);
   products = await productService.getAll();
   arr = get_Category(products,ProductID);
-  console.log(arr);
   if (!product) return next(createError(404));
   res.render('products/shop-details', {product,arr});
 };

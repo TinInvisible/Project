@@ -4,6 +4,13 @@
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+ .us_name:hover{
+  color: #fd7e14 !important;;
+ }
+.but {
+  margin:none;
+  padding:none;
+}
 :root {
   --blue:#007bff;
   --indigo:#6610f2;
