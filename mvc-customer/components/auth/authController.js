@@ -24,7 +24,7 @@ exports.register = async (req, res) => {
     res.render('auth/register', { error: e.message });
     return;
   }
-  res.redirect('/home-page');
+  res.redirect('/auth/login');
 };
 
 exports.showLoginForm = (req, res) => {
