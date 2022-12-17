@@ -9,7 +9,7 @@ const productRouter = require('./routes/index.js');
 const homePageRouter = require('./routes/home-page-route.js');
 const authRouter = require('./components/auth');
 const passport = require('./components/auth/passport');
-
+const adminRouter = require('./routes/admin')
 
 
 const app = express();
@@ -37,7 +37,7 @@ app.use(function(req, res, next) {
   res.locals.user = req.user;
   next();
 });
-
+app.use('/admin', adminRouter);
 app.use('/home-page/shop', productRouter);
 app.use('/home-page', homePageRouter);
 app.use('/auth', authRouter);
