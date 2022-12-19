@@ -10,9 +10,38 @@ const homePageRouter = require('./routes/home-page-route.js');
 const authRouter = require('./components/auth');
 const passport = require('./components/auth/passport');
 const adminRouter = require('./routes/admin')
-
+const db = require('./db');
 
 const app = express();
+const PAGE_SIZE =3;
+app.get ('/products',(req, res, next) => {
+  var page = req.query.page;
+  if(page){
+    page = parseInt(page);
+    if(page <1){
+      page=1;
+    }
+    const numberSkip = (page -1) * PAGE_SIZE;
+    db.find({})
+    .skip(numberSkip)
+    .limit(PAGE_SIZE)
+    .then(data=>{
+      res.json(data);
+    })
+    .catch(err=>{
+      res.status(500).json('Loi');
+    })
+  }
+  else{
+    db.find({})
+    .then(data=>{
+      res.json(data);
+    })
+    .catch(err=>{
+      res.status(500).json('Loi');
+    })
+  }
+})
 
 app.use(session({
   secret: 'very secret keyboard cat',
