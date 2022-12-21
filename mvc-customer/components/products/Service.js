@@ -4,7 +4,15 @@ const productRepository = require('./productsRepository');
 exports.getAll = () => {
   return productRepository.getAll();
 }
-
+exports.get_by_pages = (arr, limit, offset) => {
+  let result = []
+  const s = limit + offset;
+  const size = arr.length < s ? arr.length:s; 
+  for(var i = offset;i<size;i++){
+    result.push(arr[i]);
+  }
+  return result;
+}
 exports.filter = (name) => {
   return productRepository.filter(name);
 }
