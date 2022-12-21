@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
--- Host: localhost    Database: customer_products
+-- Host: 127.0.0.1    Database: customer_products
 -- ------------------------------------------------------
 -- Server version	8.0.31
 
@@ -16,35 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `product`
---
-
-DROP TABLE IF EXISTS `product`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `product` (
-  `ProductID` varchar(5) NOT NULL,
-  `Category` varchar(20) DEFAULT NULL,
-  `Branding` varchar(20) DEFAULT NULL,
-  `ProductName` varchar(45) DEFAULT NULL,
-  `Price` decimal(10,2) DEFAULT NULL,
-  `image` varchar(100) DEFAULT NULL,
-  `Tags` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`ProductID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `product`
---
-
-LOCK TABLES `product` WRITE;
-/*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES ('PD01','Clothing','Luois Vuitton','Pique Biker Jacket',67.24,'../img/product/product-2.jpg','Clothing'),('PD02','Shoes','Channel','vans',43.28,'../img/product/product-3.jpg','Shoes'),('PD03','Clothing','Hermes','Hoodie',60.90,'../img/product/product-4.jpg','Clothing'),('PD04','Clothing','Gucci','scarf',98.49,'../img/product/product-6.jpg','Clothing'),('PD05','Bags','Luois Vuitton','bag',49.66,'../img/product/product-7.jpg','Bags'),('PD06','Clothing','Channel','polo',26.28,'../img/product/product-8.jpg','Clothing'),('PD07','Clothing','Hermes','t-shirt',67.24,'../img/product/product-9.jpg','Clothing'),('PD08','Bags','Gucci','chest-bag',43.48,'../img/product/product-10.jpg','Bags'),('PD09','Bags','Luois Vuitton','bag',60.90,'../img/product/product-11.jpg','Bags'),('PD10','Clothing','Channel','Hooide2',98.49,'../img/product/product-12.jpg','Clothing'),('PD11','Accessories','Hermes','pocket',49.66,'../img/product/product-13.jpg','Accessories'),('PD12','Accessories','Gucci','accessories',26.28,'../img/product/product-14.jpg','Accessories');
-/*!40000 ALTER TABLE `product` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `productdetail`
 --
 
@@ -52,7 +23,7 @@ DROP TABLE IF EXISTS `productdetail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `productdetail` (
-  `ProductID` varchar(5) NOT NULL,
+  `ProductID` int NOT NULL,
   `Price` decimal(10,2) DEFAULT NULL,
   `ImgMain1` varchar(45) DEFAULT NULL,
   `ImgMain2` varchar(45) DEFAULT NULL,
@@ -68,9 +39,7 @@ CREATE TABLE `productdetail` (
   `Branding` varchar(45) DEFAULT NULL,
   `Name` varchar(45) DEFAULT NULL,
   `img` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`ProductID`),
-  CONSTRAINT `productdetail_ibfk_1` FOREIGN KEY (`ProductID`) REFERENCES `product` (`ProductID`),
-  CONSTRAINT `productdetail_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `product` (`ProductID`)
+  PRIMARY KEY (`ProductID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -80,7 +49,7 @@ CREATE TABLE `productdetail` (
 
 LOCK TABLES `productdetail` WRITE;
 /*!40000 ALTER TABLE `productdetail` DISABLE KEYS */;
-INSERT INTO `productdetail` VALUES ('PD01',67.24,'../../img/product/product-2.jpg','../../img/product/product-2.jpg','../../img/product/product-2.jpg','../../img/product/product-2.jpg','../../img/product/product-2.jpg','../../img/product/product-2.jpg','../../img/product/product-2.jpg','../../img/product/product-2.jpg','bla bla','bla bla','Clothing','LuoisVuitton','Pique Biker Jacket','../img/product/product-2.jpg'),('PD02',43.28,'../../img/product/product-3.jpg','../../img/product/product-3.jpg','../../img/product/product-3.jpg','../../img/product/product-3.jpg','../../img/product/product-3.jpg','../../img/product/product-3.jpg','../../img/product/product-3.jpg','../../img/product/product-3.jpg','',NULL,'Shoes','Channel','vans','../img/product/product-3.jpg'),('PD03',60.90,'../../img/product/product-4.jpg','../../img/product/product-4.jpg','../../img/product/product-4.jpg','../../img/product/product-4.jpg','../../img/product/product-4.jpg','../../img/product/product-4.jpg','../../img/product/product-4.jpg','../../img/product/product-4.jpg',NULL,NULL,'Clothing','Hermes','Hoodie','../img/product/product-4.jpg'),('PD04',98.49,'../../img/product/product-6.jpg','../../img/product/product-6.jpg','../../img/product/product-6.jpg','../../img/product/product-6.jpg','../../img/product/product-6.jpg','../../img/product/product-6.jpg','../../img/product/product-6.jpg','../../img/product/product-6.jpg',NULL,NULL,'Clothing','Gucci','scarf','../img/product/product-6.jpg'),('PD05',49.66,'../../img/product/product-7.jpg','../../img/product/product-7.jpg','../../img/product/product-7.jpg','../../img/product/product-7.jpg','../../img/product/product-7.jpg','../../img/product/product-7.jpg','../../img/product/product-7.jpg','../../img/product/product-7.jpg',NULL,NULL,'Bags','LuoisVuitton','bag','../img/product/product-7.jpg'),('PD06',26.28,'../../img/product/product-8.jpg','../../img/product/product-8.jpg','../../img/product/product-8.jpg','../../img/product/product-8.jpg','../../img/product/product-8.jpg','../../img/product/product-8.jpg','../../img/product/product-8.jpg','../../img/product/product-8.jpg',NULL,NULL,'Clothing','Channel','polo','../img/product/product-8.jpg'),('PD07',67.24,'../../img/product/product-9.jpg','../../img/product/product-9.jpg','../../img/product/product-9.jpg','../../img/product/product-9.jpg','../../img/product/product-9.jpg','../../img/product/product-9.jpg','../../img/product/product-9.jpg','../../img/product/product-9.jpg',NULL,NULL,'Clothing','Hermes','t-shirt','../img/product/product-9.jpg'),('PD08',43.48,'../../img/product/product-10.jpg','../../img/product/product-10.jpg','../../img/product/product-10.jpg','../../img/product/product-10.jpg','../../img/product/product-10.jpg','../../img/product/product-10.jpg','../../img/product/product-10.jpg','../../img/product/product-10.jpg',NULL,NULL,'Bags','Gucci','chest-bag','../img/product/product-10.jpg'),('PD09',60.90,'../../img/product/product-11.jpg','../../img/product/product-11.jpg','../../img/product/product-11.jpg','../../img/product/product-11.jpg','../../img/product/product-11.jpg','../../img/product/product-11.jpg','../../img/product/product-11.jpg','../../img/product/product-11.jpg',NULL,NULL,'Bags','LuoisVuitton','bag','../img/product/product-11.jpg'),('PD10',98.49,'../../img/product/product-12.jpg','../../img/product/product-12.jpg','../../img/product/product-12.jpg','../../img/product/product-12.jpg','../../img/product/product-12.jpg','../../img/product/product-12.jpg','../../img/product/product-12.jpg','../../img/product/product-12.jpg',NULL,NULL,'Clothing','Channel','Hooide2','../img/product/product-12.jpg'),('PD11',49.66,'../../img/product/product-13.jpg','../../img/product/product-13.jpg','../../img/product/product-13.jpg','../../img/product/product-13.jpg','../../img/product/product-13.jpg','../../img/product/product-13.jpg','../../img/product/product-13.jpg','../../img/product/product-13.jpg',NULL,'','Accessory','Hermes','pocket','../img/product/product-13.jpg'),('PD12',26.28,'../../img/product/product-14.jpg','../../img/product/product-14.jpg','../../img/product/product-14.jpg','../../img/product/product-14.jpg','../../img/product/product-14.jpg','../../img/product/product-14.jpg','../../img/product/product-14.jpg','../../img/product/product-14.jpg',NULL,NULL,'Accessory','Gucci','accessories','../img/product/product-14.jpg');
+INSERT INTO `productdetail` VALUES (1,67.24,'../../img/product/product-2.jpg','../../img/product/product-2.jpg','../../img/product/product-2.jpg','../../img/product/product-2.jpg','../../img/product/product-2.jpg','../../img/product/product-2.jpg','../../img/product/product-2.jpg','../../img/product/product-2.jpg','bla bla','bla bla','Clothing','LuoisVuitton','Pique Biker Jacket','../img/product/product-2.jpg'),(2,43.28,'../../img/product/product-3.jpg','../../img/product/product-3.jpg','../../img/product/product-3.jpg','../../img/product/product-3.jpg','../../img/product/product-3.jpg','../../img/product/product-3.jpg','../../img/product/product-3.jpg','../../img/product/product-3.jpg','',NULL,'Shoes','Channel','vans','../img/product/product-3.jpg'),(3,60.90,'../../img/product/product-4.jpg','../../img/product/product-4.jpg','../../img/product/product-4.jpg','../../img/product/product-4.jpg','../../img/product/product-4.jpg','../../img/product/product-4.jpg','../../img/product/product-4.jpg','../../img/product/product-4.jpg',NULL,NULL,'Clothing','Hermes','Hoodie','../img/product/product-4.jpg'),(4,98.49,'../../img/product/product-6.jpg','../../img/product/product-6.jpg','../../img/product/product-6.jpg','../../img/product/product-6.jpg','../../img/product/product-6.jpg','../../img/product/product-6.jpg','../../img/product/product-6.jpg','../../img/product/product-6.jpg',NULL,NULL,'Clothing','Gucci','scarf','../img/product/product-6.jpg'),(5,49.66,'../../img/product/product-7.jpg','../../img/product/product-7.jpg','../../img/product/product-7.jpg','../../img/product/product-7.jpg','../../img/product/product-7.jpg','../../img/product/product-7.jpg','../../img/product/product-7.jpg','../../img/product/product-7.jpg',NULL,NULL,'Bags','LuoisVuitton','bag','../img/product/product-7.jpg'),(6,26.28,'../../img/product/product-8.jpg','../../img/product/product-8.jpg','../../img/product/product-8.jpg','../../img/product/product-8.jpg','../../img/product/product-8.jpg','../../img/product/product-8.jpg','../../img/product/product-8.jpg','../../img/product/product-8.jpg',NULL,NULL,'Clothing','Channel','polo','../img/product/product-8.jpg'),(7,67.24,'../../img/product/product-9.jpg','../../img/product/product-9.jpg','../../img/product/product-9.jpg','../../img/product/product-9.jpg','../../img/product/product-9.jpg','../../img/product/product-9.jpg','../../img/product/product-9.jpg','../../img/product/product-9.jpg',NULL,NULL,'Clothing','Hermes','t-shirt','../img/product/product-9.jpg'),(8,43.48,'../../img/product/product-10.jpg','../../img/product/product-10.jpg','../../img/product/product-10.jpg','../../img/product/product-10.jpg','../../img/product/product-10.jpg','../../img/product/product-10.jpg','../../img/product/product-10.jpg','../../img/product/product-10.jpg',NULL,NULL,'Bags','Gucci','chest-bag','../img/product/product-10.jpg'),(9,60.90,'../../img/product/product-11.jpg','../../img/product/product-11.jpg','../../img/product/product-11.jpg','../../img/product/product-11.jpg','../../img/product/product-11.jpg','../../img/product/product-11.jpg','../../img/product/product-11.jpg','../../img/product/product-11.jpg',NULL,NULL,'Bags','LuoisVuitton','bag','../img/product/product-11.jpg'),(10,98.49,'../../img/product/product-12.jpg','../../img/product/product-12.jpg','../../img/product/product-12.jpg','../../img/product/product-12.jpg','../../img/product/product-12.jpg','../../img/product/product-12.jpg','../../img/product/product-12.jpg','../../img/product/product-12.jpg',NULL,NULL,'Clothing','Channel','Hooide2','../img/product/product-12.jpg'),(11,49.66,'../../img/product/product-13.jpg','../../img/product/product-13.jpg','../../img/product/product-13.jpg','../../img/product/product-13.jpg','../../img/product/product-13.jpg','../../img/product/product-13.jpg','../../img/product/product-13.jpg','../../img/product/product-13.jpg',NULL,'','Accessory','Hermes','pocket','../img/product/product-13.jpg'),(12,26.28,'../../img/product/product-14.jpg','../../img/product/product-14.jpg','../../img/product/product-14.jpg','../../img/product/product-14.jpg','../../img/product/product-14.jpg','../../img/product/product-14.jpg','../../img/product/product-14.jpg','../../img/product/product-14.jpg',NULL,NULL,'Accessory','Gucci','accessories','../img/product/product-14.jpg');
 /*!40000 ALTER TABLE `productdetail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,4 +90,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-14  9:37:34
+-- Dump completed on 2022-12-21 18:49:58
