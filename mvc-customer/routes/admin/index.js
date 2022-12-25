@@ -6,5 +6,5 @@ const cusController = require('../../components/admin/mainPageController');
 
 router.get('/', cusController.get_HomePage);
 
-router.get('/:page', cusController.get_Page);
+router.get('/:slug', cusController.get_Pages);
 module.exports = router;

@@ -67,3 +67,44 @@ exports.sortByNameAsc =() =>  {
 }
 
 
+//____________________________________________
+
+exports.getAll_page = () => {
+  return productRepository.getAll();
+}
+
+exports.filter_page = (name) => {
+  return productRepository.filter_page(name);
+}
+
+exports.filter1_page = (name) => {
+  return productRepository.filter1_page(name);
+}
+exports.filter2_page = (name) => {
+  return productRepository.filter2_page(name);
+}
+exports.filter3_page = () => {
+  return productRepository.filter3_page();
+}
+exports.filter4_page = () => {
+  return productRepository.filter4_page();
+}
+exports.filter5_page = () => {
+  return productRepository.filter5_page();
+}
+exports.sort_price_asc_page = () => {
+  return productRepository.sort_price_asc_page();
+}
+exports.sort_price_dsc_page = () => {
+  return productRepository.sort_price_dsc_page();
+}
+exports.sort_name_asc_page = () => {
+  return productRepository.sort_name_asc_page();
+}
+exports.sort_name_dsc_page = () => {
+  return productRepository.sort_name_dsc_page();
+}
+exports.get = (id) => productRepository.get(id);
+
+
+
