@@ -50,48 +50,48 @@ exports.sort_name_dsc = async () => {
 //___________________________________________________________
 
 exports.getAll_page = async (limit,offset) => {
-  const result =  await db.connection.execute('select * from productdetail limit' + limit +'offset ?',[offset]);
+  const result =  await db.connection.execute('select * from productdetail limit ' + limit +'offset ?',[offset]);
   return result[0];
 }
 
 exports.filter_page = async (name,limit,offset) => {
-  const result =  await db.connection.execute("SELECT * FROM productdetail where Name like ?" + limit +"offset ?", [`%${name}%`]);
+  const result =  await db.connection.execute("SELECT * FROM productdetail where Name like ? limit " + limit +"offset ?", [`%${name}%`]);
   return result[0];
 }
 exports.filter1_page = async (name,limit,offset) => {
-  const result =  await db.connection.execute("SELECT * FROM productdetail where Category = ?"+ limit +"offset ?", [name]);
+  const result =  await db.connection.execute("SELECT * FROM productdetail where Category = ? limit "+ limit +"offset ?", [name]);
   return result[0];
 }
 exports.filter2_page = async (name,limit,offset) => {
-  const result =  await db.connection.execute("SELECT * FROM productdetail where Branding = ?"+ limit +"offset ?", [name]);
+  const result =  await db.connection.execute("SELECT * FROM productdetail where Branding = ? limit "+ limit +"offset ?", [name]);
   return result[0];
 }
 exports.filter3_page = async (limit,offset) => {
-  const result =  await db.connection.execute("SELECT * FROM productdetail where Price <= 50"+ limit +"offset ?");
+  const result =  await db.connection.execute("SELECT * FROM productdetail where Price <= 50 limit "+ limit +"offset ?");
   return result[0];
 }
 exports.filter4_page = async (limit,offset) => {
-  const result =  await db.connection.execute("SELECT * FROM productdetail where Price > 50 and Price < 100"+ limit +"offset ?");
+  const result =  await db.connection.execute("SELECT * FROM productdetail where Price > 50 and Price < 100 limit "+ limit +"offset ?");
   return result[0];
 }
 exports.filter5_page = async (limit,offset) => {
-  const result =  await db.connection.execute("SELECT * FROM productdetail where Price > 100"+ limit +"offset ?");
+  const result =  await db.connection.execute("SELECT * FROM productdetail where Price > 100 limit "+ limit +"offset ?");
   return result[0];
 }
 exports.sort_price_asc_page = async (limit,offset) => {
-  const result =  await db.connection.execute("select * from productdetail order by productdetail.Price ASC"+ limit +"offset ?");
+  const result =  await db.connection.execute("select * from productdetail order by productdetail.Price ASC limit "+ limit +"offset ?");
   return result[0];
 }
 exports.sort_price_dsc_page = async (limit,offset) => {
-  const result =  await db.connection.execute("select * from productdetail order by productdetail.price DESC"+ limit +"offset ?");
+  const result =  await db.connection.execute("select * from productdetail order by productdetail.price DESC limit "+ limit +"offset ?");
   return result[0];
 }
 exports.sort_name_asc_page = async (limit,offset) => {
-  const result =  await db.connection.execute("select * from productdetail order  by productdetail.Name ASC"+ limit +"offset ?");
+  const result =  await db.connection.execute("select * from productdetail order  by productdetail.Name ASC limit "+ limit +"offset ?");
   return result[0];
 }
 exports.sort_name_dsc_page = async (limit,offset) => {
-  const result =  await db.connection.execute("select * from  productdetail order by productdetail.Name DESC"+ limit +"offset ?");
+  const result =  await db.connection.execute("select * from  productdetail order by productdetail.Name DESC limit "+ limit +"offset ?");
   return result[0];
 }
 
