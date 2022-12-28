@@ -9,9 +9,12 @@ exports.add = (req, res) => {
   if (!req.session.cart)
     req.session.cart = cartService.initCart();
   cartService.add(productId, req.session.cart);
-  res.json(req.session.cart);
+
+  res.redirect('/home-page/shop');
 };
 
 exports.cartDetail = async (req, res) => {
-  res.json(await cartService.cartDetails(req.session.cart));
+  let list_products = await cartService.cartDetails(req.session.cart);
+  console.log(list_products);
+  res.render('products/shopping-cart', {list_products});
 }

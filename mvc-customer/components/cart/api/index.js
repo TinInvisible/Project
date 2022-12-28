@@ -1,9 +1,9 @@
-const express = require('express');
-const router = express.Router();
+// const express = require('express');
+// const router = express.Router();
 
-const cartApiController = require('./cartApiController');
+// const cartApiController = require('./cartApiController');
 
-router.post('/add', cartApiController.add);
-router.get('/', cartApiController.cartDetail);
+// router.post('/', cartApiController.add);
+// router.get('/', cartApiController.cartDetail);
 
-module.exports = router;
+// module.exports = router;

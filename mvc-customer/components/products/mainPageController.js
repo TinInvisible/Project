@@ -19,6 +19,7 @@ exports.list = async (req, res) => {
     filter_name = 'name';
     target_name = nameFilter;
     products = await productService.filter(nameFilter);
+    console.log(products);
   }
   else if (category) {
     filter_name = 'category';
@@ -81,8 +82,8 @@ exports.list = async (req, res) => {
     })
   }  
   products = productService.get_by_pages(products,limit,offset);
-  const {sort,...withoutSort} = req.query;
-  res.render('products/shop', { products, pageNumbers ,originalUrl: `${req.baseUrl}?${qs.stringify(withoutSort)}` });
+
+  res.render('products/shop', { products, pageNumbers});
 };
 
 function get_Category(list, id) {
@@ -109,3 +110,6 @@ exports.details = async (req, res, next) => {
   if (!product) return next(createError(404));
   res.render('products/shop-details', {product,arr});
 };
+exports.get_cart = (req, res) => {
+  res.render('products/shopping-cart');
+}
