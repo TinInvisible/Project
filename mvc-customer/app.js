@@ -41,10 +41,14 @@ app.use(function(req, res, next) {
   res.locals.user = req.user;
   next();
 });
+
+
+app.use('/auth', authRouter);
 app.use('/admin', adminRouter);
 app.use('/home-page/shop', productRouter);
 app.use('/home-page', homePageRouter);
-app.use('/auth', authRouter);
+
+
 
 
 // app.use('/shop', productRouter);

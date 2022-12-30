@@ -9,6 +9,6 @@ router.get('/', productController.getHomePage);
 router.get('/profile/:id', productController.getProFile);
 router.post('/profile/:id', productController.editProfile);
 router.get('/:slug', productController.link_to);
-router.post('/',cartController.add);
-router.get('/',cartController.cartDetail);
+
+
 module.exports = router;

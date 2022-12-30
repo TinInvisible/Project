@@ -68,6 +68,7 @@ exports.list = async (req, res) => {
   }
   else
     products = await productService.getAll();
+
   num_products = products.length;
   const pages = Math.ceil(num_products / limit);
   const pageNumbers = [];
@@ -80,7 +81,7 @@ exports.list = async (req, res) => {
       filter: filter_name,
       target: target_name
     })
-  }  
+  }
   products = productService.get_by_pages(products,limit,offset);
 
   res.render('products/shop', { products, pageNumbers});
@@ -103,13 +104,17 @@ function get_Category(list, id) {
 exports.details = async (req, res, next) => {
   const { ProductID } = req.params;
   let products = [];
+
   let arr = [];
-  const product = await productService.get(ProductID);
   products = await productService.getAll();
   arr = get_Category(products,ProductID);
+
+  const product = await productService.get(ProductID);
   if (!product) return next(createError(404));
   res.render('products/shop-details', {product,arr});
 };
+
+
 exports.get_cart = (req, res) => {
   res.render('products/shopping-cart');
 }
