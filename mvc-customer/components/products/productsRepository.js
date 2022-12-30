@@ -104,3 +104,8 @@ exports.get = async (id) => {
   const result =  await db.connection.execute("SELECT * FROM productdetail where ProductID = ?", [id]);
   return result[0][0];
 }
+
+
+//------------------------------------------------------
+
+

@@ -118,3 +118,5 @@ exports.details = async (req, res, next) => {
 exports.get_cart = (req, res) => {
   res.render('products/shopping-cart');
 }
+
+
