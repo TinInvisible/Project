@@ -106,5 +106,8 @@ exports.sort_name_dsc_page = () => {
 }
 exports.get = (id) => productRepository.get(id);
 
+// shipping detail
+
+
 
 

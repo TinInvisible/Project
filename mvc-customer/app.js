@@ -47,6 +47,7 @@ app.use('/home-page', homePageRouter);
 app.use('/auth', authRouter);
 
 
+
 // app.use('/shop', productRouter);
 // catch 404 and forward to error handler
 app.use(function(req,
