@@ -11,4 +11,5 @@ router.post('/profile/:id', productController.editProfile);
 router.get('/:slug', productController.link_to);
 router.post('/',cartController.add);
 router.get('/',cartController.cartDetail);
+router.post('/checkout', productController.insertShippingDetail);
 module.exports = router;

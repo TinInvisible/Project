@@ -8,7 +8,7 @@ router.get('/register', authController.showRegistrationForm);
 router.post('/register', authController.register);
 
 router.get('/login', authController.showLoginForm);
-router.post('/login', passport.authenticate('local', {
+router.post('/login', passport.authenticate('customer-local', {
   successRedirect: '/home-page',
   failureRedirect: '/auth/login',
 }));

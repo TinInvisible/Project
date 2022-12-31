@@ -1,4 +1,5 @@
 const service = require('./home-page-service');
+
 const createError = require('http-errors');
 const qs = require('qs');
 exports.link_to = (req, res) => {
@@ -14,11 +15,14 @@ exports.getProFile = async (req, res, next) => {
     if (!user) return next(createError(404));
     res.render('products/profile', { user });
 }
+
 exports.editProfile = async (req, res, next) => {
     const { id } = req.params;
     const { name } = req.body;
     const { age } = req.body;
     const { gender } = req.body;
+    const {img} = req.body;
+    const img1 = "../../abc/xyz/" + img;
     console.log(name);
     if(name){
         await service.change_name(name,id);
@@ -33,4 +37,10 @@ exports.editProfile = async (req, res, next) => {
     const user = await service.getID(id);
     if (!user) return next(createError(404));
     res.render('products/profile', { user });
+}
+
+exports.insertShippingDetail= async(req,res)=>{
+    const  {firstName,lastName,Country,Address,townCity, postCode, Phone,Email} = req.body;
+    await service.insertShippingDetail(firstName,lastName,Country,Address,townCity,postCode,Phone,Email);
+    res.render('products/checkout');
 }

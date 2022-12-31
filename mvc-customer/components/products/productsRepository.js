@@ -3,6 +3,7 @@ const db = require('../../db');
 
 exports.getAll = async () => {
   const result =  await db.connection.execute('select * from productdetail');
+  console.log(result[0]);
   return result[0];
 }
 
@@ -50,7 +51,7 @@ exports.sort_name_dsc = async () => {
 //___________________________________________________________
 
 exports.getAll_page = async (limit,offset) => {
-  const result =  await db.connection.execute('select * from productdetail limit ' + limit +'offset ?',[offset]);
+  const result =  await db.connection.execute('select * from productdetail limit ' + limit + 'offset ?',[offset]);
   return result[0];
 }
 
@@ -103,3 +104,8 @@ exports.get = async (id) => {
   const result =  await db.connection.execute("SELECT * FROM productdetail where ProductID = ?", [id]);
   return result[0][0];
 }
+
+
+//------------------------------------------------------
+
+

@@ -4,18 +4,36 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
-
+const hbs = require('hbs');
 
 const productRouter = require('./routes/index.js');
 const homePageRouter = require('./routes/home-page-route.js');
 const authRouter = require('./components/auth');
 const passport = require('./components/auth/passport');
 const adminRouter = require('./routes/admin');
-
+const authApiRouter = require('./components/auth/api');
 const db = require('./db');
 
 const app = express();
 const PAGE_SIZE =3;
+var blocks = {};
+
+hbs.registerHelper('extend', function(name, context) {
+  var block = blocks[name];
+  if (!block) {
+    block = blocks[name] = [];
+  }
+
+  block.push(context.fn(this)); 
+});
+
+hbs.registerHelper('block', function(name) {
+  var val = (blocks[name] || []).join('\n');
+
+  // clear the block
+  blocks[name] = [];
+  return val;
+});
 
 app.use(session({
   secret: 'very secret keyboard cat',
@@ -41,10 +59,15 @@ app.use(function(req, res, next) {
   res.locals.user = req.user;
   next();
 });
+
+app.use('/api/auth', authApiRouter);
+app.use('/auth', authRouter);
 app.use('/admin', adminRouter);
 app.use('/home-page/shop', productRouter);
 app.use('/home-page', homePageRouter);
-app.use('/auth', authRouter);
+
+
+
 
 
 // app.use('/shop', productRouter);
