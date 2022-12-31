@@ -34,3 +34,16 @@ exports.editProfile = async (req, res, next) => {
     if (!user) return next(createError(404));
     res.render('admin/profile', { user,layout:'layout_admin.hbs' });
 }
+
+exports.addProduct = async (req, res, next) => {
+    const { name } = req.body;
+    const { price } = req.body;
+    const { shortDes } = req.body;
+    const { longDes } = req.body;
+    const { category } = req.body;
+    const { branding } = req.body;
+    const { quantity } = req.body;
+
+    await service.addProduct(name, price, shortDes, longDes, category, branding, quantity);
+    res.redirect('/admin/tables');
+}

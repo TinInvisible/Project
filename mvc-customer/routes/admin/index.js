@@ -20,5 +20,7 @@ router.get('/tables',tables.tables);
 router.get('/profile/:id', adminController.getProFile);
 router.post('/profile/:id', adminController.editProfile);
 
+router.post('/tables', adminController.addProduct);
+
 router.get('/:slug', adminController.get_Pages);
 module.exports = router;

@@ -17,3 +17,7 @@ exports.change_name = (name, id) => {
 //   return home_page_Repository.change_gender(name, id);
 // }
 exports.getID = (id) => home_page_Repository.get(id);
+
+exports.addProduct = (name, price, shortDes, longDes, category, branding, quantity) => {
+  return home_page_Repository.addProduct(name, price, shortDes, longDes, category, branding, quantity);
+}

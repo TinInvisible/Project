@@ -422,99 +422,38 @@
                   <thead>
                     <tr>
                       <th>
-                        <form method="get">
-                          Search by name:
-                          <input type="text" name="name_customer" placeholder="Search">
+                        <form method="post">
+                          Create new product:
+                          <br>
+                          Name:
+                          <input type="text" name="name" placeholder="">
+                          <br>
+                          Price:
+                          <input type="text" name="price" placeholder="">
+                          <br>
+                          Short description:
+                          <input type="text" name="shortDes" placeholder="">
+                          <br>
+                          Long discription:
+                          <input type="text" name="longDes" placeholder="">
+                          <br>
+                          Category:
+                          <input type="text" name="category" placeholder="">
+                          <br>
+                          Branding:
+                          <input type="text" name="branding" placeholder="">
+                          <br>
+                          Quantity:
+                          <input type="text" name="quantity" placeholder="">
+
+                          <button type="submit" class="btn btn-light">Add</button>
                         </form>
-                      </th>
-                      <th>
-                        <form method="get">
-                          Search by email:
-                          <input type="text" name="email_customer" placeholder="Search">
-                        </form>
+
                       </th>
                     </tr>
                     <tr>
                     <tr>
-                      <th>
-                        <div class="card">
-                          <div class="card-heading">
-                            <a data-toggle="collapse" data-target="#collapseOne">Categories</a>
-                          </div>
-                          <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
-                            <div class="card-body">
-                              <div class="shop__sidebar__categories">
-                                <ul class="nice-scroll">
-                                  <li>
-                                    <form method="get">
-                                      <button type="submit" class="btn btn-light" value="Clothing"
-                                        name="category">Clothing</button>
-                                    </form>
-                                  </li>
-                                  <li>
-                                    <form method="get">
-                                      <button type="submit" class="btn btn-light" value="Shoes"
-                                        name="category">Shoes</button>
-                                    </form>
-                                  </li>
-                                  <li>
-                                    <form method="get">
-                                      <button type="submit" class="btn btn-light" value="Bags"
-                                        name="category">Bags</button>
-                                    </form>
-                                  </li>
-                                  <li>
-                                    <form method="get">
-                                      <button type="submit" class="btn btn-light" value="Accessory"
-                                        name="category">Accessory</button>
-                                    </form>
-                                  </li>
-                                </ul>
 
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </th>
-                      <th>
-                        <div class="card">
-                          <div class="card-heading">
-                            <a data-toggle="collapse" data-target="#collapseTwo">Manufacturer</a>
-                          </div>
-                          <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
-                            <div class="card-body">
-                              <div class="shop__sidebar__brand">
-                                <ul>
-                                  <li>
-                                    <form method="get">
-                                      <button type="submit" class="btn btn-light" value="LuoisVuitton"
-                                        name="branding">Luois Vuitton</button>
-                                    </form>
-                                  </li>
-                                  <li>
-                                    <form method="get">
-                                      <button type="submit" class="btn btn-light" value="Channel"
-                                        name="branding">Channel</button>
-                                    </form>
-                                  </li>
-                                  <li>
-                                    <form method="get">
-                                      <button type="submit" class="btn btn-light" value="Hermes"
-                                        name="branding">Hermes</button>
-                                    </form>
-                                  </li>
-                                  <li>
-                                    <form method="get">
-                                      <button type="submit" class="btn btn-light" value="Gucci"
-                                        name="branding">Gucci</button>
-                                    </form>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </th>
                     </tr>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Project</th>
