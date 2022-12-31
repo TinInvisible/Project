@@ -17,3 +17,7 @@ exports.get = async (id) => {
 exports.addProduct = async (name, price, shortDes, longDes, category, branding, quantity) => {
     const result = await db.connection.execute("INSERT INTO productdetail (Name, Price, ShortDescription, LongDescription, Category, Branding, Quantity) VALUES (?, ?, ?, ?, ?, ?, ?)", [name, price, shortDes, longDes, category, branding, quantity])
 }
+
+exports.deleteProduct = async (name, category, branding) => {
+    const result = await db.connection.execute("DELETE FROM productdetail WHERE Name = ? AND category = ? AND branding = ?", [name, category, branding]);
+}

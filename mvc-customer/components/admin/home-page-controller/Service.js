@@ -21,3 +21,7 @@ exports.getID = (id) => home_page_Repository.get(id);
 exports.addProduct = (name, price, shortDes, longDes, category, branding, quantity) => {
   return home_page_Repository.addProduct(name, price, shortDes, longDes, category, branding, quantity);
 }
+
+exports.deleteProduct = (name, category, branding) => {
+  return home_page_Repository.deleteProduct(name, category, branding);
+}
