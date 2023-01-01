@@ -13,6 +13,11 @@ exports.tables = async (req, res) => {
     const {name_customer} = req.query;
     const {email_customer} = req.query;
     const {sort_customer} = req.query;
+
+    // filter
+    const { category } = req.query;
+    const { branding } = req.query;
+
     if(name_admin){
         admins = await service.getName(name_admin,'user_admin');
     }
@@ -50,5 +55,14 @@ exports.tables = async (req, res) => {
         customers = service.sort_dsc(customers,'email');
     }
 
+    if (category) {
+        products = await service.filter_category(category);
+    }
+    else if (branding) {
+        products = await service.filter_branding(branding);
+    }
+
     res.render('admin/tables', { admins, customers, products, layout:'layout_admin.hbs' })
 }
+
+

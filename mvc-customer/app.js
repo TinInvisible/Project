@@ -66,6 +66,9 @@ app.use('/api/auth', authApiRouter);
 app.use('/home-page/api/shop', productApiRouter);
 app.use('/auth', authRouter);
 app.use('/admin', adminRouter);
+
+app.use('/admin/billing', adminRouter);
+app.use('/admin/notifications',adminRouter);
 app.use('/home-page/shop', productRouter);
 app.use('/home-page', homePageRouter);
 

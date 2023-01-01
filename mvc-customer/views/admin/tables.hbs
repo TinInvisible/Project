@@ -465,6 +465,84 @@
                           <button type="submit" class="btn btn-light">Delete</button>
                         </form>
                       </th>
+                      <th>
+                        <div class="card">
+                            <div class="card-heading">
+                                <a data-toggle="collapse" data-target="#collapseOne">Categories</a>
+                            </div>
+                              <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="shop__sidebar__categories">
+                                        <ul class="nice-scroll">
+                                            <li>
+                                                <form method="get">
+                                                    <button type="submit" class="btn btn-light" value="Clothing"
+                                                        name="category">Clothing</button>
+                                                </form>
+                                            </li>
+                                            <li>
+                                                <form method="get">
+                                                    <button type="submit" class="btn btn-light" value="Shoes"
+                                                        name="category">Shoes</button>
+                                                </form>
+                                            </li>
+                                            <li>
+                                                <form method="get">
+                                                    <button type="submit" class="btn btn-light" value="Bags"
+                                                        name="category">Bags</button>
+                                                </form>
+                                            </li>
+                                            <li>
+                                                <form method="get">
+                                                    <button type="submit" class="btn btn-light" value="Accessory"
+                                                        name="category">Accessory</button>
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      </th>
+                      <th>
+                        <div class="card">
+                          <div class="card-heading">
+                              <a data-toggle="collapse" data-target="#collapseTwo">Branding</a>
+                          </div>
+                          <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="shop__sidebar__brand">
+                                  <ul>
+                                      <li>
+                                          <form method="get">
+                                              <button type="submit" class="btn btn-light" value="LuoisVuitton"
+                                                  name="branding">Luois Vuitton</button>
+                                          </form>
+                                      </li>
+                                      <li>
+                                          <form method="get">
+                                              <button type="submit" class="btn btn-light" value="Channel"
+                                                  name="branding">Channel</button>
+                                          </form>
+                                      </li>
+                                      <li>
+                                          <form method="get">
+                                              <button type="submit" class="btn btn-light" value="Hermes"
+                                                  name="branding">Hermes</button>
+                                          </form>
+                                      </li>
+                                      <li>
+                                          <form method="get">
+                                              <button type="submit" class="btn btn-light" value="Gucci"
+                                                  name="branding">Gucci</button>
+                                          </form>
+                                      </li>
+                                  </ul>
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                      </th>
                     </tr>
                     <tr>
                     <tr>
@@ -515,8 +593,12 @@
                           <span class="text-xs font-weight-bold">{{Total_purchase}}</span>
                         </div>
                       </td>
+                      ádfasdf
                       <td class="align-middle">
-                        <a href="/admin/tables/update_product" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
+
+                        
+
+                        <a href="/admin/tables/update-product/{{ProductID}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
                           data-original-title="Edit user">
                           Edit
                         </a>

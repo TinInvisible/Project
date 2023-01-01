@@ -7,8 +7,18 @@ const passport = require('../../components/auth/passport');
 const tables = require('../../components/admin/tables/controller');
 const admin_check = require('../../components/middleware/middleware.js')
 
+
 router.get('/', adminController.get_HomePage);
+
+router.get('/',adminController.List);
+router.get('notifications/:IdOrder', adminController.details);
+
+
+
+
+
 router.get('/sign-up', authController.showRegistrationForm);
+
 router.post('/sign-up', authController.register);
 router.get('/sign-in', authController.showLoginForm);
 router.post('/sign-in',passport.authenticate('admin-local', {
@@ -22,8 +32,10 @@ router.post('/tables', adminController.manageProduct);
 
 router.get('/profile/:id', adminController.getProFile);
 router.post('/profile/:id', adminController.editProfile);
-
-
-
+router.get('/tables/update-product', adminController.manageProduct);
+router.post('/tables', adminController.manageProduct);
 router.get('/:slug', adminController.get_Pages);
+
+
+
 module.exports = router;
