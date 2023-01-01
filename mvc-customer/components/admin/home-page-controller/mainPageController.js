@@ -51,8 +51,6 @@ exports.manageProduct = async (req, res) => {
 
     const { category } = req.query;
     const { branding } = req.query;
-    const { category } = req.query;
-    const { branding } = req.query;
 
     if (name_add && price && shortDes && longDes && category_add && branding_add && quantity) {
         await service.addProduct(name_add, price, shortDes, longDes, category_add, branding_add, quantity);

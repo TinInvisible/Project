@@ -28,8 +28,6 @@ exports.deleteProduct = (name, category, branding) => {
 
 exports.updateProduct = (name, category, branding, quantity, status) => {
   return home_page_Repository.updateProduct(name, category, branding, quantity, status);
-<<<<<<< HEAD
-<<<<<<< HEAD
 }
 
 
@@ -55,8 +53,4 @@ exports.getOrderListByStatus1=()=>{
 
 exports.getOrder =(id)=>{
   return home_page_Repository.getOrder(id);
-=======
->>>>>>> 9302ef03db233230cad2ec81f66ea4e790176ccb
-=======
->>>>>>> 9302ef03db233230cad2ec81f66ea4e790176ccb
 }
