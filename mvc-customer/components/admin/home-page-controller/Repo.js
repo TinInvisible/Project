@@ -25,3 +25,40 @@ exports.deleteProduct = async (name, category, branding) => {
 exports.updateProduct = async (name, category, branding, quantity, status) => {
     const result = await db.connection.execute("UPDATE FROM ")
 }
+
+exports.getOrderList = async ()=>{
+    const result = await db.connection.execute("select  * from shippingdetail  ");
+    return result[0];
+}
+
+
+exports.getOrderListByTimeAsc = async ()=>{
+    const result = await db.connection.execute("select  * from shippingdetail order by date asc ");
+    return result[0];
+}
+
+exports.getOrderListByTimeDesc = async ()=>{
+    const result = await db.connection.execute("select  * from shippingdetail order by date desc ");
+    return result[0];
+}
+
+exports.getOrderListByStatus = async ()=>{
+    const result = await db.connection.execute("select * from shippingdetail where status ='DaGiao'");
+    return result[0];
+}
+
+exports.getOrderListByStatus1 = async()=>{
+    const result  = await db.connection.excute("select * from shippingdetail where status ='ChuaGiao'");
+    return result[0];
+}
+
+
+exports.getOrder = async (id) => {
+    const result =  await db.connection.execute("SELECT * FROM shippingdetail where IdOrder = ?", [id]);
+    return result[0][0];
+}
+
+
+
+
+
