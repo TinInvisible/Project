@@ -26,10 +26,37 @@ exports.deleteProduct = (name, category, branding) => {
   return home_page_Repository.deleteProduct(name, category, branding);
 }
 
-exports.filter_category = (category) => {
-  return home_page_Repository.filter_category(category);
+exports.updateProduct = (name, category, branding, quantity, status) => {
+  return home_page_Repository.updateProduct(name, category, branding, quantity, status);
+<<<<<<< HEAD
+<<<<<<< HEAD
 }
 
-exports.filter_branding = (branding) => {
-  return home_page_Repository.filter_branding(branding);
+
+exports.getOrderList = () =>{
+  return home_page_Repository.getOrderList();
+}
+
+exports.getOrderListByTimeAsc = () =>{
+  return home_page_Repository.getOrderListByTimeAsc();
+}
+
+exports.getOrderListByTimeDesc = () =>{
+  return home_page_Repository.getOrderListByTimeDesc();
+}
+
+exports.getOrderListByStatus = () =>{
+  return home_page_Repository.getOrderListByStatus();
+}
+
+exports.getOrderListByStatus1=()=>{
+  return home_page_Repository.getOrderListByStatus1();
+}
+
+exports.getOrder =(id)=>{
+  return home_page_Repository.getOrder(id);
+=======
+>>>>>>> 9302ef03db233230cad2ec81f66ea4e790176ccb
+=======
+>>>>>>> 9302ef03db233230cad2ec81f66ea4e790176ccb
 }

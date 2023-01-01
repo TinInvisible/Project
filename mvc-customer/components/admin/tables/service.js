@@ -40,3 +40,11 @@ exports.sort_dsc = (list, target) => {
 exports.getAll_customer = () => {
     return repo.getAll_customer();
 }
+
+exports.filter_category = (category) => {
+    return repo.filter_category(category);
+}
+  
+exports.filter_branding = (branding) => {
+    return repo.filter_branding(branding);
+}
