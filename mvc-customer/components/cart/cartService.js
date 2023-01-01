@@ -31,3 +31,7 @@ exports.cartDetails = async (cart) => {
 exports.initCart = () => ({
   products: [],
 });
+
+exports.initFilter = () => ({
+  products: [],
+});

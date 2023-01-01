@@ -113,9 +113,57 @@ exports.getProducts = async (page) => {
   const result = await db.connection.execute(`select * from productdetail limit ${ITEM_PER_PAGE} offset ${(page - 1) * ITEM_PER_PAGE}`);
   return result[0];
 };
-
+exports.getProducts_name = async (page, name) => {
+  const result = await db.connection.execute(`select * from productdetail where Name like ? limit ${ITEM_PER_PAGE} offset ${(page - 1) * ITEM_PER_PAGE}`, [`%${name}%`]);
+  return result[0];
+};
+exports.getProducts_category = async (page, category) => {
+  const result = await db.connection.execute(`select * from productdetail where Category = ? limit ${ITEM_PER_PAGE} offset ${(page - 1) * ITEM_PER_PAGE}`,[category]);
+  return result[0];
+};
+exports.getProducts_branding = async (page, branding) => {
+  const result = await db.connection.execute(`select * from productdetail where Branding = ? limit ${ITEM_PER_PAGE} offset ${(page - 1) * ITEM_PER_PAGE}`,[branding]);
+  return result[0];
+};
+exports.getProducts_price1 = async (page) => {
+  const result = await db.connection.execute(`select * from productdetail where Price <= 50 limit ${ITEM_PER_PAGE} offset ${(page - 1) * ITEM_PER_PAGE}`);
+  return result[0];
+};
+exports.getProducts_price2 = async (page) => {
+  const result = await db.connection.execute(`select * from productdetail where Price >= 50 and Price <=100 limit ${ITEM_PER_PAGE} offset ${(page - 1) * ITEM_PER_PAGE}`);
+  return result[0];
+};
+exports.getProducts_price3 = async (page) => {
+  const result = await db.connection.execute(`select * from productdetail where Price >= 100 limit ${ITEM_PER_PAGE} offset ${(page - 1) * ITEM_PER_PAGE}`);
+  return result[0];
+};
 
 exports.count = async () => {
   const result = await db.connection.execute(`select count(*) from productdetail`);
   return result[0][0]['count(*)'];
 }
+
+exports.count_name = async (name) => {
+  const result = await db.connection.execute(`select count(*) from productdetail where Name like ? `, [`%${name}%`]);
+  return result[0][0]['count(*)'];
+};
+exports.count_category = async (category) => {
+  const result = await db.connection.execute(`select count(*) from productdetail where Category = ?`,[category]);
+  return result[0][0]['count(*)'];
+};
+exports.count_branding = async (branding) => {
+  const result = await db.connection.execute(`select count(*) from productdetail where Branding = ? `,[branding]);
+  return result[0][0]['count(*)'];
+};
+exports.count_price1 = async () => {
+  const result = await db.connection.execute(`select count(*) from productdetail where Price <= 50 `);
+  return result[0][0]['count(*)'];
+};
+exports.count_price2 = async () => {
+  const result = await db.connection.execute(`select count(*) from productdetail where Price >= 50 and Price <=100 `);
+  return result[0][0]['count(*)'];
+};
+exports.count_price3 = async () => {
+  const result = await db.connection.execute(`select count(*) from productdetail where Price >= 100 `);
+  return result[0][0]['count(*)'];
+};

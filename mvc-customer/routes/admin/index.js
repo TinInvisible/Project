@@ -16,11 +16,14 @@ router.post('/sign-in',passport.authenticate('admin-local', {
   failureRedirect: '/admin/sign-in',
 }));
 router.get('/logout', authController.logout);
+
 router.get('/tables',tables.tables);
+router.post('/tables', adminController.manageProduct);
+
 router.get('/profile/:id', adminController.getProFile);
 router.post('/profile/:id', adminController.editProfile);
 
-router.post('/tables', adminController.manageProduct);
+
 
 router.get('/:slug', adminController.get_Pages);
 module.exports = router;

@@ -122,13 +122,7 @@ exports.sort_name_dsc_page = () => {
 }
 exports.get = (id) => productRepository.get(id);
 
-
-
-
-
 exports.getProducts = (page) => productRepository.getProducts(page);
-
-
 
 exports.getProductsWithPaging = async (page) =>{
   const products = await productRepository.getProducts(page);
@@ -137,5 +131,86 @@ exports.getProductsWithPaging = async (page) =>{
   return {products, paging: paginator.build(productCount, page)};
 }
 
+exports.getProductsWithPaging_name = async (page,name) =>{
+  const products = await productRepository.getProducts_name(page,name);
+  const productCount = await productRepository.count_name(name);
+  const paginator = new Paginator(ITEM_PER_PAGE, TOTAL_PAGING_LINK);
+  return {products, paging: paginator.build(productCount, page)};
+}
+exports.getProductsWithPaging_category = async (page,category) =>{
+  const products = await productRepository.getProducts_category(page,category);
+  const productCount = await productRepository.count_category(category);
+  const paginator = new Paginator(ITEM_PER_PAGE, TOTAL_PAGING_LINK);
+  return {products, paging: paginator.build(productCount, page)};
+}
+exports.getProductsWithPaging_branding = async (page,branding) =>{
+  const products = await productRepository.getProducts_branding(page,branding);
+  const productCount = await productRepository.count_category(branding);
+  const paginator = new Paginator(ITEM_PER_PAGE, TOTAL_PAGING_LINK);
+  return {products, paging: paginator.build(productCount, page)};
+}
+exports.getProductsWithPaging_price1 = async (page) =>{
+  const products = await productRepository.getProducts_price1(page);
+  const productCount = await productRepository.count_price1();
+  const paginator = new Paginator(ITEM_PER_PAGE, TOTAL_PAGING_LINK);
+  return {products, paging: paginator.build(productCount, page)};
+}
+exports.getProductsWithPaging_price2 = async (page) =>{
+  const products = await productRepository.getProducts_price2(page);
+  const productCount = await productRepository.count_price2();
+  const paginator = new Paginator(ITEM_PER_PAGE, TOTAL_PAGING_LINK);
+  return {products, paging: paginator.build(productCount, page)};
+}
+exports.getProductsWithPaging_price3 = async (page) =>{
+  const products = await productRepository.getProducts_price3(page);
+  const productCount = await productRepository.count_price3();
+  const paginator = new Paginator(ITEM_PER_PAGE, TOTAL_PAGING_LINK);
+  return {products, paging: paginator.build(productCount, page)};
+}
 
-
+exports.find_similar = (list1, list2) => {
+  let result = [];
+  for (let i = 0; i < list1.length; i++) {
+    for (let j = 0; j < list2.length; j++) {
+      if(list1[i].id === list2[j].id){
+        result.push(list1[i]);
+      }
+    }
+  }
+  return result;
+}
+exports.find_similar = (list1, list2) => {
+  let result = [];
+  for (let i = 0; i < list1.length; i++) {
+    for (let j = 0; j < list2.length; j++) {
+      if(list1[i].id === list2[j].id){
+        result.push(list1[i]);
+      }
+    }
+  }
+  return result;
+}
+exports.sort_asc = (list, target) => {
+  for (let i = 0; i < list.length - 1; i++) {
+      for (let j = i + 1; j < list.length; j++) {
+          if(list[i][target] > list[j][target]){
+              let c = list[i];
+              list[i] = list[j];
+              list[j] = c;   
+          }
+      }
+  }
+  return list;
+}
+exports.sort_dsc = (list, target) => {
+  for (let i = 0; i < list.length - 1; i++) {
+      for (let j = i + 1; j < list.length; j++) {
+          if(list[i][target] < list[j][target]){
+              let c = list[i];
+              list[i] = list[j];
+              list[j] = c;        
+          }
+      }
+  }
+  return list;
+}

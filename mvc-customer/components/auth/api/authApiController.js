@@ -1,4 +1,4 @@
-const authService = require('../authService');
+const authService = require('../authRepository');
 
 exports.verifyEmail = async (req, res) => {
   const { email } = req.params;

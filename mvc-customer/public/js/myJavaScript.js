@@ -1,3 +1,4 @@
-function login_success(){
-    alert('Login successfully');
-}
+$('.set-bg').each(function() {
+    var bg = $(this).data('setbg');
+    $(this).css('background-image', 'url(' + bg + ')');
+});

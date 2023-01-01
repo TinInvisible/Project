@@ -63,12 +63,11 @@ app.use(function(req, res, next) {
 });
 
 app.use('/api/auth', authApiRouter);
-app.use('/api/products', productApiRouter);
+app.use('/home-page/api/shop', productApiRouter);
 app.use('/auth', authRouter);
 app.use('/admin', adminRouter);
 app.use('/home-page/shop', productRouter);
 app.use('/home-page', homePageRouter);
-
 
 
 
