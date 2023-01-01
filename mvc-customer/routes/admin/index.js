@@ -22,7 +22,7 @@ router.get('/tables',tables.tables);
 router.get('/profile/:id', adminController.getProFile);
 router.post('/profile/:id', adminController.editProfile);
 
-router.post('/tables/update-product', adminController.manageProduct);
+router.get('/tables/update-product', adminController.manageProduct);
 
 router.post('/tables', adminController.manageProduct);
 

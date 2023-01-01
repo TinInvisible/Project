@@ -23,5 +23,5 @@ exports.deleteProduct = async (name, category, branding) => {
 }
 
 exports.updateProduct = async (name, category, branding, quantity, status) => {
-    
+    const result = await db.connection.execute("UPDATE FROM ")
 }
