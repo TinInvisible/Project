@@ -54,3 +54,7 @@ exports.getOrderListByStatus1=()=>{
 exports.getOrder =(id)=>{
   return home_page_Repository.getOrder(id);
 }
+
+exports.filter = (date)=>{
+  return home_page_Repository.filter(date);
+}

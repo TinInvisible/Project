@@ -106,6 +106,15 @@ exports.List = async (req, res) => {
 }
 
 
+exports.Revenue = async (req, res) => {
+    const {date:dateFilter}= req.query;
+     const revenue = [];
+     revenue = await service.filter(dateFilter(date));
+     const {sort, ...withoutSort} = req.query;
+     res.render('admin/dashboard',{order, originalUrl: `${req.baseUrl}?${qs.stringify(withoutSort)}`});
+
+}
+
 
 exports.details = async (req, res, next) => {
     const { IdOrder } = req.params;
