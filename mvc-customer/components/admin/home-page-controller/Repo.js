@@ -21,3 +21,12 @@ exports.addProduct = async (name, price, shortDes, longDes, category, branding, 
 exports.deleteProduct = async (name, category, branding) => {
     const result = await db.connection.execute("DELETE FROM productdetail WHERE Name = ? AND category = ? AND branding = ?", [name, category, branding]);
 }
+
+exports.filter_category = async (category) => {
+    const result =  await db.connection.execute("SELECT * FROM productdetail where Category = ?", [category]);
+    return result[0];
+  }
+  exports.filter_branding = async (branding) => {
+    const result =  await db.connection.execute("SELECT * FROM productdetail where Branding = ?", [branding]);
+    return result[0];
+  }

@@ -48,6 +48,16 @@ exports.manageProduct = async (req, res) => {
     const { category_delete } = req.body
     const { branding_delete } = req.body
 
+    const { Clothing } = req.params;
+    const { Shoes } = req.params;
+    const { Bags } = req.params;
+    const { Accessory } = req.params;
+
+    const { LuoisVuitton } = req.params;
+    const { Hermes } = req.params;
+    const { Gucci } = req.params;
+    const { Channel } = req.params;
+
     if (name_add && price && shortDes && longDes && category_add && branding_add && quantity) {
         await service.addProduct(name_add, price, shortDes, longDes, category_add, branding_add, quantity);
     }
@@ -55,5 +65,18 @@ exports.manageProduct = async (req, res) => {
     if (name_delete && category_delete && branding_delete) {
         await service.deleteProduct(name_delete, category_delete, branding_delete);
     }
+
+    if (Clothing) {
+        await service.filter_category(Clothing);
+    }
+    else if (Shoes) await service.filter_category(Shoes);
+    else if (Bags) await service.filter_category(Bags);
+    else if (Accessory) await service.filter_category(Accessory);
+    else if (LuoisVuitton) await service.filter_branding(LuoisVuitton);
+    else if (Hermes) await service.filter_branding(Hermes);
+    else if (Gucci) await service.filter_branding(Hermes);
+    else if (Channel) await service.filter_branding(Channel);
+
+
     res.redirect('/admin/tables');
 }
