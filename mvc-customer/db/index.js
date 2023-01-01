@@ -8,8 +8,8 @@ const db = {connection: null};
   db.connection = await mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    database: 'web',
-    password: 'quocthang1802'
+    database: 'doan',
+    password: 'giabao229'
   });
   console.log('Database connected!');
 })();
