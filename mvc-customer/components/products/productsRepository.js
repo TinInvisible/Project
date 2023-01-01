@@ -1,5 +1,6 @@
 
 const db = require('../../db');
+const { ITEM_PER_PAGE } = require('../../constant');
 
 exports.getAll = async () => {
   const result =  await db.connection.execute('select * from productdetail');
@@ -51,7 +52,7 @@ exports.sort_name_dsc = async () => {
 //___________________________________________________________
 
 exports.getAll_page = async (limit,offset) => {
-  const result =  await db.connection.execute('select * from productdetail limit ' + limit + 'offset ?',[offset]);
+  const result =  await db.connection.execute('select * from productdetail limit  ' + limit + 'offset ?',[offset]);
   return result[0];
 }
 
@@ -108,4 +109,13 @@ exports.get = async (id) => {
 
 //------------------------------------------------------
 
+exports.getProducts = async (page) => {
+  const result = await db.connection.execute(`select * from productdetail limit ${ITEM_PER_PAGE} offset ${(page - 1) * ITEM_PER_PAGE}`);
+  return result[0];
+};
 
+
+exports.count = async () => {
+  const result = await db.connection.execute(`select count(*) from productdetail`);
+  return result[0][0]['count(*)'];
+}

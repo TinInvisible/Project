@@ -205,64 +205,96 @@
                     </div>
                 </div>
                 <div class="row">
-                    {{#each products}}
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="{{img}}">
-                                <ul class="product__hover">
-                                    <li><a href="#"><img src="../../img/icon/heart.png" alt=""></a></li>
-                                    <li><a href="#"><img src="../../img/icon/compare.png" alt="">
-                                            <span>Compare</span></a>
-                                    </li>
-                                    <li><a href="/home-page/shop/{{ProductID}}"><img
-                                                src="../../img/icon/search.png"></a></li>
-                                </ul>
-                            </div>
-
-                            <div class="product__item__text">
-                                <h6>{{Name}}</h6>
-                                <form method="post">
-                                    <button type="submit" class="add-cart" name="productId" value="{{ProductID}}">+ Add
-                                        To Cart</a>
-                                </form>
-                                <div class="rating">
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <h5>${{Price}}</h5>
-                                <div class="product__color__select">
-                                    <label for="pc-4">
-                                        <input type="radio" id="pc-4">
-                                    </label>
-                                    <label class="active black" for="pc-5">
-                                        <input type="radio" id="pc-5">
-                                    </label>
-                                    <label class="grey" for="pc-6">
-                                        <input type="radio" id="pc-6">
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {{/each}}
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="product__pagination">
-                                {{#each this.pageNumbers}}
-                                {{#if isCurrent}}
-                                <a class="active">{{value}}</a>
-                                {{else}}
-                                <a href="?page={{value}}&{{filter}}={{target}}">{{value}}</a>
-                                {{/if}}
-                                {{/each}}
-                            </div>
-                        </div>
-                    </div>
+                    
+                    
+                    
+                    
+                    
                 </div>
             </div>
         </div>
 </section>
 <!-- Shop Section End -->
+
+
+
+<script id="products-template" type="text/x-handlebars-template">
+\{{#each products}}
+<div class="col-lg-4 col-md-6 col-sm-6">
+    <div class="product__item">
+        <div class="product__item__pic set-bg" data-setbg="\{{img}}">
+            <ul class="product__hover">
+                <li><a href="#"><img src="../../img/icon/heart.png" alt=""></a></li>
+                <li><a href="#"><img src="../../img/icon/compare.png" alt="">
+                        <span>Compare</span></a>
+                </li>
+                <li><a href="/home-page/shop/{{ProductID}}"><img
+                            src="../../img/icon/search.png"></a></li>
+            </ul>
+        </div>
+
+        <div class="product__item__text">
+            <h6>\{{Name}}</h6>
+            <form method="post">
+                <button type="submit" class="add-cart" name="productId" value="{{ProductID}}">+ Add
+                    To Cart</a>
+            </form>
+            <div class="rating">
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+                <i class="fa fa-star-o"></i>
+            </div>
+            <h5>$\{{Price}}</h5>
+            <div class="product__color__select">
+                <label for="pc-4">
+                    <input type="radio" id="pc-4">
+                </label>
+                <label class="active black" for="pc-5">
+                    <input type="radio" id="pc-5">
+                </label>
+                <label class="grey" for="pc-6">
+                    <input type="radio" id="pc-6">
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+\{{/each}}
+</script>
+                    
+
+<script id="pagination-template" type="text/x-handlebars-template">
+    \{{#each .}}
+    <li class="page-item"><a class="page-link" href="#">\{{pageNumber}}</a></li>
+    \{{/each}}
+
+</script>
+
+
+
+{{#extend "scripts"}}
+    <script>
+        function loadProductPage(page) {
+            $.getJSON(`/api/products?page=${page}`, function (products) {
+                var source = $('#products-template').html();
+                 var template = Handlebars.compile(source);
+                var html = template(products);
+                $('#products').html(html);
+
+            var links = Array.from(Array(products.paging.last_page - products.paging.first_page + 1)).map((_, idx) =>
+                ({
+                    pageNumber: idx + products.paging.first_page,
+                }));
+            $('#product-pagination').html(Handlebars.compile($('#pagination-template').html())(links));
+            $('#product-pagination .page-link').click(function (event) {
+                event.preventDefault();
+                loadProductPage($(this).html());
+            });
+        });
+    }
+
+    loadProductPage(1);
+    </script>
+{{/extend}}

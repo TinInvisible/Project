@@ -34,3 +34,26 @@ exports.editProfile = async (req, res, next) => {
     if (!user) return next(createError(404));
     res.render('admin/profile', { user,layout:'layout_admin.hbs' });
 }
+
+exports.manageProduct = async (req, res) => {
+    const { name_add } = req.body;
+    const { price } = req.body;
+    const { shortDes } = req.body;
+    const { longDes } = req.body;
+    const { category_add } = req.body;
+    const { branding_add } = req.body;
+    const { quantity } = req.body;
+
+    const { name_delete } = req.body
+    const { category_delete } = req.body
+    const { branding_delete } = req.body
+
+    if (name_add && price && shortDes && longDes && category_add && branding_add && quantity) {
+        await service.addProduct(name_add, price, shortDes, longDes, category_add, branding_add, quantity);
+    }
+
+    if (name_delete && category_delete && branding_delete) {
+        await service.deleteProduct(name_delete, category_delete, branding_delete);
+    }
+    res.redirect('/admin/tables');
+}

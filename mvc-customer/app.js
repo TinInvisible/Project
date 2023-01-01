@@ -6,12 +6,14 @@ const logger = require('morgan');
 const session = require('express-session');
 const hbs = require('hbs');
 
+
 const productRouter = require('./routes/index.js');
 const homePageRouter = require('./routes/home-page-route.js');
 const authRouter = require('./components/auth');
 const passport = require('./components/auth/passport');
 const adminRouter = require('./routes/admin');
 const authApiRouter = require('./components/auth/api');
+const productApiRouter = require('./components/products/api');
 const db = require('./db');
 
 const app = express();
@@ -61,6 +63,7 @@ app.use(function(req, res, next) {
 });
 
 app.use('/api/auth', authApiRouter);
+app.use('/api/products', productApiRouter);
 app.use('/auth', authRouter);
 app.use('/admin', adminRouter);
 app.use('/home-page/shop', productRouter);
