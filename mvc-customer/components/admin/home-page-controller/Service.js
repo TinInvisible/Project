@@ -25,3 +25,7 @@ exports.addProduct = (name, price, shortDes, longDes, category, branding, quanti
 exports.deleteProduct = (name, category, branding) => {
   return home_page_Repository.deleteProduct(name, category, branding);
 }
+
+exports.updateProduct = (name, category, branding, quantity, status) => {
+  return home_page_Repository.updateProduct(name, category, branding, quantity, status);
+}

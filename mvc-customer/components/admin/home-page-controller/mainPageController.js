@@ -71,5 +71,3 @@ exports.manageProduct = async (req, res) => {
     // else if (Channel) await service.filter_branding(Channel);
     res.redirect('/admin/tables');
 }
-
-

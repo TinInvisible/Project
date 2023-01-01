@@ -7,6 +7,8 @@ const passport = require('../../components/auth/passport');
 const tables = require('../../components/admin/tables/controller');
 const admin_check = require('../../components/middleware/middleware.js')
 
+
+
 router.get('/', adminController.get_HomePage);
 router.get('/sign-up', authController.showRegistrationForm);
 router.post('/sign-up', authController.register);
@@ -19,6 +21,8 @@ router.get('/logout', authController.logout);
 router.get('/tables',tables.tables);
 router.get('/profile/:id', adminController.getProFile);
 router.post('/profile/:id', adminController.editProfile);
+
+router.post('/tables/update-product', adminController.manageProduct);
 
 router.post('/tables', adminController.manageProduct);
 
