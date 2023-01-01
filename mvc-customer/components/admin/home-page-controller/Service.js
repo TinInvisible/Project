@@ -25,11 +25,3 @@ exports.addProduct = (name, price, shortDes, longDes, category, branding, quanti
 exports.deleteProduct = (name, category, branding) => {
   return home_page_Repository.deleteProduct(name, category, branding);
 }
-
-exports.filter_category = (category) => {
-  return home_page_Repository.filter_category(category);
-}
-
-exports.filter_branding = (branding) => {
-  return home_page_Repository.filter_branding(branding);
-}

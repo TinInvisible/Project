@@ -17,3 +17,12 @@ exports.getAll_customer = async () => {
   const result = await db.connection.execute('select * from users');
   return result[0];
 }
+
+exports.filter_category = async (category) => {
+  const result =  await db.connection.execute("SELECT * FROM productdetail where Category = ?", [category]);
+  return result[0];
+}
+exports.filter_branding = async (branding) => {
+  const result =  await db.connection.execute("SELECT * FROM productdetail where Branding = ?", [branding]);
+  return result[0];
+}
