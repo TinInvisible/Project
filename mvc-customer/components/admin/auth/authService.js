@@ -3,6 +3,8 @@ const bcrypt = require('bcryptjs');
 const authRepository = require('./authRepository');
 
 exports.register = async (fullName, email, password) => {
+  if(!email.includes("admin."))
+    email = "admin." + email;
   if (await authRepository.emailExists(email))
     throw new Error('Email exists!');
   const salt = await bcrypt.genSalt(10);
