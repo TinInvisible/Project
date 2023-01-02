@@ -108,12 +108,27 @@ exports.List = async (req, res) => {
 
 exports.Revenue = async (req, res) => {
     const {date:dateFilter}= req.query;
-     const revenue = [];
-     revenue = await service.filter(dateFilter(date));
+    const {date1: dateFilter1} = req.query;
+    let revenue = [];
+     if (dateFilter){
+     revenue = await service.filter(dateFilter);
+     console.log(revenue);
+     }
+     if (dateFilter1){
+        revenue = await service.filter1(dateFilter1);
+     }
+
+     else{
+    revenue = await service.getOrderList();
+        console.log(revenue);
+     }
      const {sort, ...withoutSort} = req.query;
-     res.render('admin/dashboard',{order, originalUrl: `${req.baseUrl}?${qs.stringify(withoutSort)}`});
+     res.render('admin/dashboard',{revenue, originalUrl: `${req.baseUrl}?${qs.stringify(withoutSort)}`});
 
 }
+
+
+
 
 
 exports.details = async (req, res, next) => {

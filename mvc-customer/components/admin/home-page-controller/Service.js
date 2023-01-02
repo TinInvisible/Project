@@ -58,3 +58,7 @@ exports.getOrder =(id)=>{
 exports.filter = (date)=>{
   return home_page_Repository.filter(date);
 }
+
+exports.filter1 = (date)=>{
+  return home_page_Repository.filter1(date);
+}

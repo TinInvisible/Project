@@ -10,8 +10,10 @@ const admin_check = require('../../components/middleware/middleware.js')
 
 router.get('/', adminController.get_HomePage);
 
-router.get('/',adminController.List);
+router.get('/billing',adminController.List);
+router.get('/dashboard',adminController.Revenue);
 router.get('notifications/:IdOrder', adminController.details);
+
 
 
 
