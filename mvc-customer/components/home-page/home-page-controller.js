@@ -1,6 +1,7 @@
 const service = require('./home-page-service');
 const cart_service = require('../cart/cartService')
 const createError = require('http-errors');
+const product_service = require('../products/Service');
 const qs = require('qs');
 const { render } = require('node-sass');
 exports.link_to = (req, res) => {
@@ -51,10 +52,15 @@ exports.insertShippingDetail = async (req, res) => {
         let Price = 0;
         for (let i = 0; i < list_products.products.length; i++) {
             Price += list_products.products[i].price;
+            let product = await product_service.get(parseInt(list_products.products[i].id));
+            console.log(list_products.products[i].id);
+            console.log(typeof(list_products.products[i].id));
+            let num_purchase = list_products.products[i].quantity + product.Total_purchase;
+ 
+            await service.update_total_purchase(num_purchase, list_products.products[i].id)
         }
 
         await service.insertShippingDetail(firstName, lastName, Country, Address, townCity, postCode, Phone, Email, Price);
-
     }
     res.redirect('/home-page/checkout');
 }

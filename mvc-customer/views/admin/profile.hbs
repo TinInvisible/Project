@@ -43,7 +43,7 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">notifications</i>
             </div>
-            <span class="nav-link-text ms-1">Notifications</span>
+            <span class="nav-link-text ms-1">Order detail</span>
           </a>
         </li>
         <li class="nav-item mt-3">
@@ -51,7 +51,7 @@
         </li>
         {{#if user}}
         <li class="nav-item">
-          <a class="nav-link text-white " href="/admin/profile/{{id}}">
+          <a class="nav-link text-white " href="/admin/profile">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">person</i>
             </div>
@@ -346,8 +346,10 @@
                      
                       <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp;
                         {{user.email}}</li>
-                      <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location:</strong>
-                        &nbsp; USA</li>
+                      <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Gender:</strong>
+                         <input type="text" name="gender" placeholder="{{user.gender}}" class="rounded"></li>
+                        <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Age: </strong>
+                         <input type="text" name="age" placeholder="{{user.age}}" class="rounded"></li>
                       <li class="list-group-item border-0 ps-0 text-sm"><button type="submit" class="btn btn-light">Edit
                           Profile</button></li>
                     </ul>

@@ -1,15 +1,25 @@
 
-const passport = require('../../components/auth/passport');
-exports.check_admin = (req, res, next) =>{
-    if(!req.body)
-    {
-        res.redirect('/admin/sign-in');
+exports.verify_customer = (req, res, next) => {
+    if (!req.user || req.user.email.includes("admin.")) {
+        req.logout(function (err) {
+            if (err) {
+                return next(err);
+            }
+            res.redirect('/auth/login');
+        });
         return;
     }
-    if(!req.body['email'].includes("admin.")){
-        res.redirect('/admin/sign-in');
-        return;
-    }
-   
     next();
-}
+};
+exports.verify_admin = (req, res, next) => {
+    if (!req.user || !req.user.email.includes("admin.")) {
+        req.logout(function (err) {
+            if (err) {
+                return next(err);
+            }
+            res.redirect('/admin/sign-in');
+        });
+        return;
+    }
+    next();
+};

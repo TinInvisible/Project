@@ -14,7 +14,6 @@ exports.getEmail = (name,table) => {
 
 
 exports.sort_asc = (list, target) => {
-    console.log(list);
     for (let i = 0; i < list.length - 1; i++) {
         for (let j = i + 1; j < list.length; j++) {
             if(list[i][target] > list[j][target]){
@@ -67,4 +66,7 @@ exports.edit_product_branding = (branding, id) => {
 
 exports.edit_product_status = (status, id) => {
     return repo.edit_product_status(status, id);
+}
+exports.delete_product = (id) => {
+    return repo.deleteProduct(id);
 }

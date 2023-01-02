@@ -43,7 +43,7 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">notifications</i>
             </div>
-            <span class="nav-link-text ms-1">Notifications</span>
+            <span class="nav-link-text ms-1">Order detail</span>
           </a>
         </li>
         <li class="nav-item mt-3">
@@ -51,7 +51,7 @@
         </li>
         {{#if user}}
         <li class="nav-item">
-          <a class="nav-link text-white " href="/admin/profile/{{user.id}}">
+          <a class="nav-link text-white " href="/admin/profile">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">person</i>
             </div>
@@ -274,11 +274,8 @@
                         </th>
                       </form>
 
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Function</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status
-                      </th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                        Employed</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Role</th>
+
                       <th class="text-secondary opacity-7"></th>
                     </tr>
                   </thead>
@@ -297,18 +294,12 @@
                         </div>
                       </td>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0">Manager</p>
-                        <p class="text-xs text-secondary mb-0">Organization</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Online</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                        <p class="text-xs font-weight-bold mb-0">Admin</p>
+
                       </td>
                       <td class="align-middle">
-                        <a href="/admin/tables/acc_details/{{id}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
-                          data-original-title="Edit user">
+                        <a href="/admin/tables/acc_details_admin/{{id}}" class="text-secondary font-weight-bold text-xs"
+                          data-toggle="tooltip" data-original-title="Edit user">
                           Edit
                         </a>
                       </td>
@@ -361,11 +352,8 @@
                         </th>
                       </form>
 
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Function</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status
-                      </th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                        Employed</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Role</th>
+
                       <th class="text-secondary opacity-7"></th>
                     </tr>
                   </thead>
@@ -384,17 +372,13 @@
                         </div>
                       </td>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0">Manager</p>
-                        <p class="text-xs text-secondary mb-0">Organization</p>
+                        <p class="text-xs font-weight-bold mb-0">Customer</p>
+
                       </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Online</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
-                      </td>
+
                       <td class="align-middle">
-                        <a href="/tables/acc_details/{{id}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
+                        <a href="/admin/tables/acc_details_customer/{{id}}"
+                          class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
                           data-original-title="Edit user">
                           Edit
                         </a>
@@ -438,127 +422,135 @@
                           <input type="text" name="longDes" placeholder="">
                           <br>
                           Category:
-                          <input type="text" name="category_add" placeholder="">
+                          <select name="category_add" class="rounded">
+                            <option value="Clothing">Clothing</option>
+                            <option value="Shoes">Shoes</option>
+                            <option value="Bags">Bags</option>
+                            <option value="Accessory">Accessories</option>
+                          </select>
                           <br>
                           Branding:
-                          <input type="text" name="branding_add" placeholder="">
-                          <br>
-                          Quantity:
-                          <input type="text" name="quantity" placeholder="">
+                          <select name="branding_add" class="rounded">
+                            <option value="LuoisVuitton">LuoisVuitton</option>
+                            <option value="Gucci">Gucci</option>
+                            <option value="Channel">Channel</option>
+                            <option value="Hermes">Hermes</option>
+                          </select>
                           <br>
                           <button type="submit" class="btn btn-light">Add</button>
                         </form>
                       </th>
-                      <th>
-                        <form method="post">
-                          Delete product:
-                          <br>
-                          Name:
-                          <input type="text" name="name_delete" placeholder="">
-                          <br>
-                          Category:
-                          <input type="text" name="category_delete" placeholder="">
-                          <br>
-                          Branding:
-                          <input type="text" name="branding_delete" placeholder="">
-                          <br>
-                          <button type="submit" class="btn btn-light">Delete</button>
-                        </form>
-                      </th>
+
                       <th>
                         <div class="card">
-                            <div class="card-heading">
-                                <a data-toggle="collapse" data-target="#collapseOne">Categories</a>
+                          <div class="card-heading">
+                            <a data-toggle="collapse" data-target="#collapseOne">Categories</a>
+                          </div>
+                          <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                            <div class="card-body">
+                              <div class="shop__sidebar__categories">
+                                <ul class="nice-scroll">
+                                  <li>
+                                    <form method="get">
+                                      <button type="submit" class="btn btn-light" value="Clothing"
+                                        name="category">Clothing</button>
+                                    </form>
+                                  </li>
+                                  <li>
+                                    <form method="get">
+                                      <button type="submit" class="btn btn-light" value="Shoes"
+                                        name="category">Shoes</button>
+                                    </form>
+                                  </li>
+                                  <li>
+                                    <form method="get">
+                                      <button type="submit" class="btn btn-light" value="Bags"
+                                        name="category">Bags</button>
+                                    </form>
+                                  </li>
+                                  <li>
+                                    <form method="get">
+                                      <button type="submit" class="btn btn-light" value="Accessory"
+                                        name="category">Accessory</button>
+                                    </form>
+                                  </li>
+                                </ul>
+                              </div>
                             </div>
-                              <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <div class="shop__sidebar__categories">
-                                        <ul class="nice-scroll">
-                                            <li>
-                                                <form method="get">
-                                                    <button type="submit" class="btn btn-light" value="Clothing"
-                                                        name="category">Clothing</button>
-                                                </form>
-                                            </li>
-                                            <li>
-                                                <form method="get">
-                                                    <button type="submit" class="btn btn-light" value="Shoes"
-                                                        name="category">Shoes</button>
-                                                </form>
-                                            </li>
-                                            <li>
-                                                <form method="get">
-                                                    <button type="submit" class="btn btn-light" value="Bags"
-                                                        name="category">Bags</button>
-                                                </form>
-                                            </li>
-                                            <li>
-                                                <form method="get">
-                                                    <button type="submit" class="btn btn-light" value="Accessory"
-                                                        name="category">Accessory</button>
-                                                </form>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                          </div>
                         </div>
                       </th>
                       <th>
                         <div class="card">
                           <div class="card-heading">
-                              <a data-toggle="collapse" data-target="#collapseTwo">Branding</a>
+                            <a data-toggle="collapse" data-target="#collapseTwo">Branding</a>
                           </div>
                           <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
                             <div class="card-body">
-                                <div class="shop__sidebar__brand">
-                                  <ul>
-                                      <li>
-                                          <form method="get">
-                                              <button type="submit" class="btn btn-light" value="LuoisVuitton"
-                                                  name="branding">Luois Vuitton</button>
-                                          </form>
-                                      </li>
-                                      <li>
-                                          <form method="get">
-                                              <button type="submit" class="btn btn-light" value="Channel"
-                                                  name="branding">Channel</button>
-                                          </form>
-                                      </li>
-                                      <li>
-                                          <form method="get">
-                                              <button type="submit" class="btn btn-light" value="Hermes"
-                                                  name="branding">Hermes</button>
-                                          </form>
-                                      </li>
-                                      <li>
-                                          <form method="get">
-                                              <button type="submit" class="btn btn-light" value="Gucci"
-                                                  name="branding">Gucci</button>
-                                          </form>
-                                      </li>
-                                  </ul>
-                                </div>
+                              <div class="shop__sidebar__brand">
+                                <ul>
+                                  <li>
+                                    <form method="get">
+                                      <button type="submit" class="btn btn-light" value="LuoisVuitton"
+                                        name="branding">Luois Vuitton</button>
+                                    </form>
+                                  </li>
+                                  <li>
+                                    <form method="get">
+                                      <button type="submit" class="btn btn-light" value="Channel"
+                                        name="branding">Channel</button>
+                                    </form>
+                                  </li>
+                                  <li>
+                                    <form method="get">
+                                      <button type="submit" class="btn btn-light" value="Hermes"
+                                        name="branding">Hermes</button>
+                                    </form>
+                                  </li>
+                                  <li>
+                                    <form method="get">
+                                      <button type="submit" class="btn btn-light" value="Gucci"
+                                        name="branding">Gucci</button>
+                                    </form>
+                                  </li>
+                                </ul>
                               </div>
+                            </div>
                           </div>
                         </div>
                       </th>
                     </tr>
-                    <tr>
-                    <tr>
 
-                    </tr>
+
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Project</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Price</th>
-
+                      <form method="get">
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                          <select name="sort_product" class="rounded">
+                            <option value="">Price</option>
+                            <option value="asc_price">Increase</option>
+                            <option value="dsc_price">Decrease</option>
+                          </select>
+                          <button type="submit" class="rounded">Select</button>
+                        </th>
+                      </form>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">
                         Manufacturer</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">
                         Category</th>
+                      <form method="get">
+                        <th
+                          class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">
+                          <select name="sort_product" class="rounded">
+                            <option value="">Total purchase</option>
+                            <option value="asc_purchase">Increase</option>
+                            <option value="purchase">Decrease</option>
+                          </select>
+                          <button type="submit" class="rounded">Select</button>
+                        </th>
+                      </form>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">
-                        Total
-                        purchase</th>
+                        Status</th>
                       <th></th>
                     </tr>
                   </thead>
@@ -579,8 +571,10 @@
                         <p class="text-sm font-weight-bold mb-0">{{Price}}</p>
                       </td>
 
-                      <td>
-                        <span class="text-xs font-weight-bold">{{Branding}}</span>
+                      <td class="align-middle text-center">
+                        <div class="d-flex align-items-center justify-content-center">
+                          <span class="text-xs font-weight-bold">{{Branding}}</span>
+                        </div>
                       </td>
 
                       <td class="align-middle text-center">
@@ -593,9 +587,15 @@
                           <span class="text-xs font-weight-bold">{{Total_purchase}}</span>
                         </div>
                       </td>
+                      <td class="align-middle text-center">
+                        <div class="d-flex align-items-center justify-content-center">
+                          <span class="text-xs font-weight-bold">{{status}}</span>
+                        </div>
+                      </td>
                       <td class="align-middle">
 
-                        <a href="/admin/tables/edit-product/{{ProductID}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
+                        <a href="/admin/tables/edit-product/{{ProductID}}"
+                          class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
                           data-original-title="Edit user">
                           Edit
                         </a>

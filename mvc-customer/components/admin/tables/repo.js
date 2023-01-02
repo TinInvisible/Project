@@ -36,13 +36,16 @@ exports.edit_product_name = async (name, id) => {
 }
 
 exports.edit_product_category = async (category, id) => {
-  const result = await db.connection.execute("UPDATE productdetail SET Name = ? WHERE ProductID = ?", [category, id]);
+  const result = await db.connection.execute("UPDATE productdetail SET Category = ? WHERE ProductID = ?", [category, id]);
 }
 
 exports.edit_product_branding = async (branding, id) => {
-  const result = await db.connection.execute("UPDATE productdetail SET Name = ? WHERE ProductID = ?", [branding, id]);
+  const result = await db.connection.execute("UPDATE productdetail SET Branding = ? WHERE ProductID = ?", [branding, id]);
 }
 
 exports.edit_product_status = async (status, id) => {
-  const result = await db.connection.execute("UPDATE productdetail SET Name = ? WHERE ProductID = ?", [status, id]);
+  const result = await db.connection.execute("UPDATE productdetail SET status = ? WHERE ProductID = ?", [status, id]);
+}
+exports.deleteProduct = async (id) => {
+  const result = await db.connection.execute("DELETE FROM productdetail WHERE ProductID = ?", [id]);
 }
