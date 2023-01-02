@@ -58,7 +58,10 @@ exports.getOrder = async (id) => {
     return result[0][0];
 }
 
-
+exports.filter = async (date) => {
+    const result =  await db.connection.execute("SELECT * FROM shippingdetail where date like ?", [`%${date}%`]);
+    return result[0];
+  }
 
 
 
