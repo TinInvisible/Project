@@ -4,7 +4,10 @@ exports.getAll_admin = async () => {
   const result = await db.connection.execute('select * from user_admin');
   return result[0];
 }
-
+exports.get = async (id, table) => {
+  const result = await db.connection.execute("SELECT * FROM " + table + " where id = ?", [id]);
+  return result[0][0];
+}
 exports.getName = async (name, table) => {
   const result = await db.connection.execute('select * from ' + table + ' where name like ?', [`%${name}%`]);
   return result[0];

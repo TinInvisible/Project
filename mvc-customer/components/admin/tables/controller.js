@@ -66,3 +66,9 @@ exports.tables = async (req, res) => {
 }
 
 
+exports.acc_details = async (req,res,next) => {
+    const {id} = req.params;
+    const acc = await service.getID(id, 'user_admin');
+    
+    res.render('admin/acc_details', {acc, layout:'layout_admin.hbs'});
+}

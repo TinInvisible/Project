@@ -3,7 +3,7 @@ const repo = require('./repo');
 exports.getAll_admin = () => {
     return repo.getAll_admin();
 }
-
+exports.getID = (id,table) => repo.get(id,table);
 exports.getName = (name,table) => {
     return repo.getName(name,table);
 }

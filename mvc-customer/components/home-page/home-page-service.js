@@ -12,6 +12,6 @@ exports.change_gender = (name, id) => {
 }
 exports.getID = (id) => home_page_Repository.get(id);
 
-exports.insertShippingDetail = (firstName, lastName,Country,Address,townCity, postCode, Phone,Email) => {
-    return home_page_Repository.insertShippingDetail(firstName, lastName,Country,Address,townCity, postCode, Phone,Email);
-  }
+exports.insertShippingDetail = (firstName, lastName,Country,Address,townCity, postCode, Phone,Email, price) => {
+    return home_page_Repository.insertShippingDetail(firstName, lastName,Country,Address,townCity, postCode, Phone,Email, price);
+}

@@ -48,7 +48,7 @@ exports.getOrderListByStatus = async ()=>{
 }
 
 exports.getOrderListByStatus1 = async()=>{
-    const result  = await db.connection.excute("select * from shippingdetail where status ='ChuaGiao'");
+    const result  = await db.connection.execute("select * from shippingdetail where status ='ChuaGiao'");
     return result[0];
 }
 

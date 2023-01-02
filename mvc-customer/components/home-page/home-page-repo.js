@@ -14,7 +14,7 @@ exports.get = async (id) => {
     return result[0][0];
 }
 
-exports.insertShippingDetail = async (firstName, lastName,Country, Address,townCity,postCode,Phone, Email)=>{
-    await db.connection.execute('insert into shippingdetail (firstName, lastName,Country,Address,townCity,postCode,Phone,Email) VALUES (?, ?, ?, ?,?,?,?,?)', [firstName, lastName,Country, Address,townCity, postCode, Phone, Email]);
+exports.insertShippingDetail = async (firstName, lastName,Country, Address,townCity,postCode,Phone, Email,price)=>{
+    await db.connection.execute('insert into shippingdetail (firstName, lastName,Country,Address,townCity,postCode,Phone,Email,Price) VALUES (?, ?, ?, ?, ?,?,?,?,?)', [firstName, lastName,Country, Address,townCity, postCode, Phone, Email, price]);
   }
   

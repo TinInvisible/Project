@@ -10,13 +10,10 @@ const admin_check = require('../../components/middleware/middleware.js')
 
 router.get('/', adminController.get_HomePage);
 
-router.get('/',adminController.List);
-router.get('notifications/:IdOrder', adminController.details);
+router.get('/billing',adminController.List);
+router.get('/billing/:IdOrder', adminController.details);
 
-
-
-
-
+router.get('/tables/acc_details/:id', tables.acc_details);
 router.get('/sign-up', authController.showRegistrationForm);
 
 router.post('/sign-up', authController.register);

@@ -83,7 +83,7 @@
                             <div class="header__top__links">
                                 <div class="ml-auto">
                                     {{#if user}}
-                                    <div>Welcome <a href="/home-page/profile/{{user.id}}" class="orange">{{user.name}}!</a>, <a href="/auth/logout">Logout</a></div>
+                                     <form method="post" action="/home-page/profile"><div>Welcome<button type="submit" class="btn-light" name="id" value="{{user.id}}">{{user.name}}</button>, <a href="/auth/logout">Logout</a></div></form>
                                     {{else}}
                                     <a href="/auth/login" class="nav-item nav-link">Login</a>
                                     <a href="/auth/register" class="nav-item nav-link">Register</a>

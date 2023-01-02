@@ -22,7 +22,7 @@ exports.cartDetails = async (cart) => {
     let count = parseFloat(cartDetails.products[i].quantity);
     i++;
     return {
-      ...product, name: productInfo.Name, price: Price * count
+      ...product, name: productInfo.Name, price: Price * count, img: productInfo.ImgMain1
     };
   }));
   return cartDetails;

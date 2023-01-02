@@ -101,8 +101,8 @@ exports.List = async (req, res) => {
     else{
     order =  await service.getOrderList();
     }
-    const {sort, ...withoutSort} = req.query;
-    res.render('admin/billing',{order, originalUrl: `${req.baseUrl}?${qs.stringify(withoutSort)}`});
+ 
+    res.render('admin/billing',{order, layout:'layout_admin.hbs'});
 }
 
 
@@ -126,5 +126,5 @@ exports.details = async (req, res, next) => {
   
     const order = await service.getOrder(IdOrder);
     
-    res.render('admin/notifications', {order});
+    res.render('admin/notifications', {order, layout:'layout_admin.hbs'});
   };
