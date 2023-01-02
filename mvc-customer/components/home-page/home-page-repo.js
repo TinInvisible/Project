@@ -16,6 +16,6 @@ exports.get = async (id) => {
 exports.update_total_purchase = async (num, id) => {
     await db.connection.execute("UPDATE productdetail SET Total_purchase = ? WHERE (ProductID = ?);", [num, id]);
 }
-exports.insertShippingDetail = async (firstName, lastName, Country, Address, townCity, postCode, Phone, Email, price) => {
-    await db.connection.execute('insert into shippingdetail (firstName, lastName,Country,Address,townCity,postCode,Phone,Email,Price, status) VALUES (?, ?, ?, ?, ?,?,?,?,?,?)', [firstName, lastName, Country, Address, townCity, postCode, Phone, Email, price,'ChuaGiao']);
+exports.insertShippingDetail = async (firstName, lastName, Country, Address, townCity, postCode, Phone, Email, price, day) => {
+    await db.connection.execute('insert into shippingdetail (firstName, lastName,Country,Address,townCity,postCode,Phone,Email,Price, status, date) VALUES (?, ?, ?, ?, ?, ?,?,?,?,?,?)', [firstName, lastName, Country, Address, townCity, postCode, Phone, Email, price,'ChuaGiao', day]);
 }

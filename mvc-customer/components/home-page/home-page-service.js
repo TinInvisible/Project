@@ -14,6 +14,6 @@ exports.getID = (id) => home_page_Repository.get(id);
 exports.update_total_purchase = (num, id) => {
     return home_page_Repository.update_total_purchase(num, id);
 }
-exports.insertShippingDetail = (firstName, lastName,Country,Address,townCity, postCode, Phone,Email, price) => {
-    return home_page_Repository.insertShippingDetail(firstName, lastName,Country,Address,townCity, postCode, Phone,Email, price);
+exports.insertShippingDetail = (firstName, lastName,Country,Address,townCity, postCode, Phone,Email, price, day) => {
+    return home_page_Repository.insertShippingDetail(firstName, lastName,Country,Address,townCity, postCode, Phone,Email, price, day);
 }

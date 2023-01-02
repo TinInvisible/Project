@@ -45,9 +45,9 @@ exports.editProfile = async (req, res, next) => {
 }
 
 exports.insertShippingDetail = async (req, res) => {
-    const { firstName, lastName, Country, Address, townCity, postCode, Phone, Email } = req.body;
+    const { firstName, lastName, Country, Address, townCity, postCode, Phone, Email, Day, Month, Year } = req.body;
     let list_products = await cart_service.cartDetails(req.session.cart);
-    if (list_products.products && firstName && lastName && Country && Address && townCity && postCode && Phone, Email) {
+    if (list_products.products && firstName && lastName && Country && Address && townCity && postCode && Phone, Email && Day && Month && Year) {
 
         let Price = 0;
         for (let i = 0; i < list_products.products.length; i++) {
@@ -59,8 +59,8 @@ exports.insertShippingDetail = async (req, res) => {
  
             await service.update_total_purchase(num_purchase, list_products.products[i].id)
         }
-
-        await service.insertShippingDetail(firstName, lastName, Country, Address, townCity, postCode, Phone, Email, Price);
+        let day = Year +"-"+Month+"-"+Day;
+        await service.insertShippingDetail(firstName, lastName, Country, Address, townCity, postCode, Phone, Email, Price, day);
     }
     res.redirect('/home-page/checkout');
 }

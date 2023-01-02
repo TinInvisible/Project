@@ -114,8 +114,8 @@ exports.Revenue = async (req, res) => {
     revenue = await service.getOrderList();
         console.log(revenue);
      }
-     const {sort, ...withoutSort} = req.query;
-     res.render('admin/dashboard',{revenue, originalUrl: `${req.baseUrl}?${qs.stringify(withoutSort)}`});
+ 
+     res.render('admin/dashboard',{revenue, layout:'layout_admin.hbs'});
 
 }
 
