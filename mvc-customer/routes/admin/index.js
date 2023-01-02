@@ -32,7 +32,8 @@ router.get('/tables',tables.tables);
 router.get('/profile/:id', adminController.getProFile);
 router.post('/profile/:id', adminController.editProfile);
 
-router.get('/tables/update-product', adminController.manageProduct);
+router.get('/tables/edit-product/:ProductID', tables.getEditProduct);
+router.post('/tables/edit-product/:ProductID', tables.editProduct);
 
 router.post('/tables', adminController.manageProduct);
 
