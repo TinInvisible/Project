@@ -77,6 +77,7 @@ exports.tables = async (req, res) => {
     }
     res.render('admin/tables', { admins, customers, products, layout: 'layout_admin.hbs' })
 }
+
 exports.acc_details = async (req, res, next) => {
     const { id } = req.params;
     const acc = await service.getID(id, 'user_admin');
@@ -89,8 +90,11 @@ exports.acc_details_customer = async (req, res, next) => {
     const role = 'Customer'
     res.render('admin/acc_details', { acc, role, layout: 'layout_admin.hbs' });
 }
-exports.editProduct = async (req, res, next) => {
+
+exports.editProduct = async (req, res) => { 
     const { ProductID } = req.params;
+
+
     const { edit_name } = req.body;
     const { edit_category } = req.body;
     const { edit_branding } = req.body;
@@ -116,6 +120,9 @@ exports.editProduct = async (req, res, next) => {
     else{
         await service.delete_product(ProductID);
     }
+
+
+
     res.redirect('/admin/tables')
 }
 

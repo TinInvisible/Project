@@ -20,10 +20,6 @@ exports.addProduct = async (name, price, shortDes, longDes, category, branding) 
 
 
 
-exports.updateProduct = async (name, category, branding, quantity, status) => {
-    const result = await db.connection.execute("UPDATE FROM ")
-}
-
 exports.getOrderList = async ()=>{
     const result = await db.connection.execute("select  * from shippingdetail  ");
     return result[0];
