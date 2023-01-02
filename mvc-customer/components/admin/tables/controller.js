@@ -1,6 +1,7 @@
 const service = require('./service');
 const products_service = require('../../products/Service');
 const { emailExists } = require('../auth/authRepository');
+const qs = require('qs');
 
 exports.tables = async (req, res) => {
     let admins = await service.getAll_admin();
@@ -65,4 +66,30 @@ exports.tables = async (req, res) => {
     res.render('admin/tables', { admins, customers, products, layout:'layout_admin.hbs' })
 }
 
+exports.editProduct = async (req, res, next) => { 
+    const { ProductID } = req.pagrams;
 
+    const { edit_name } = req.body;
+    const { edit_category } = req.body;
+    const { edit_branding } = req.body;
+    const { edit_status } = req.body;
+
+    if (edit_name) {
+        await service.edit_product_name(edit_name, ProductID);
+    }
+    else if (edit_category) {
+        await service.edit_product_category(edit_category, ProductID);
+    }
+    else if (edit_branding) {
+        await service.edit_product_branding(edit_branding, ProductID);
+    }
+    else if (edit_status) {
+        await service.edit_product_status(edit_status, ProductID);
+    }
+
+    res.redirect('/admin/tables')
+}
+
+exports.getEditProduct = async (req, res) => {
+    res.render('admin/edit-product');
+}
