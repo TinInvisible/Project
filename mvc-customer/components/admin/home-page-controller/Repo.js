@@ -22,10 +22,6 @@ exports.deleteProduct = async (name, category, branding) => {
     const result = await db.connection.execute("DELETE FROM productdetail WHERE Name = ? AND category = ? AND branding = ?", [name, category, branding]);
 }
 
-exports.updateProduct = async (name, category, branding, quantity, status) => {
-    const result = await db.connection.execute("UPDATE FROM ")
-}
-
 exports.getOrderList = async ()=>{
     const result = await db.connection.execute("select  * from shippingdetail  ");
     return result[0];
