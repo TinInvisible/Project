@@ -69,6 +69,7 @@ exports.manageProduct = async (req, res) => {
 
 
 exports.List = async (req, res) => {
+    
     const {status} = req.query;
     const {time} = req.query;
 
@@ -120,6 +121,17 @@ exports.Revenue = async (req, res) => {
 }
 
 
+exports.updateStatus = async (req, res, next) => {
+    const {IdOrder}= req.params;
+  
+    const {statusUpdate} = req.body;
+
+  
+    await service.updateStatus(statusUpdate,IdOrder);
+   
+    res.redirect('/admin/billing')
+    
+}
 
 
 

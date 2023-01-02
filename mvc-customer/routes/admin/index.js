@@ -20,6 +20,7 @@ router.post('/sign-in', passport.authenticate('admin-local', {
 router.get('/logout', authController.logout);
 router.get('/billing', middleware.verify_admin,adminController.List);
 router.get('/billing/:IdOrder',middleware.verify_admin, adminController.details);
+router.post('/billing/:IdOrder',adminController.updateStatus);
 
 router.get('/tables/acc_details_admin/:id',middleware.verify_admin, tables.acc_details);
 router.get('/tables/acc_details_customer/:id',middleware.verify_admin, tables.acc_details_customer);
