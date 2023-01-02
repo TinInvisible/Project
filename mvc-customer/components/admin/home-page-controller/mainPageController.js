@@ -89,8 +89,7 @@ exports.List = async (req, res) => {
     }
     else if(status ==="ChuaGiao"){
         order = await service.getOrderListByStatus1();
-
-        
+ 
     }
     else if(time ==="asc"){
         order = await service.getOrderListByTimeAsc();
