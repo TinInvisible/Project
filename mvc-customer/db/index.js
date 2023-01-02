@@ -10,6 +10,7 @@ const db = {connection: null};
     user: 'root',
     database: 'customer_products',
     password: 'T!nInvisible123'
+
   });
   console.log('Database connected!');
 })();

@@ -50,3 +50,21 @@ exports.filter_category = (category) => {
 exports.filter_branding = (branding) => {
     return repo.filter_branding(branding);
 }
+
+
+//edit product
+exports.edit_product_name = (name, id) => {
+    return repo.edit_product_name(name, id);
+}
+
+exports.edit_product_category = (category, id) => {
+    return repo.edit_product_category(category, id);
+}
+
+exports.edit_product_branding = (branding, id) => {
+    return repo.edit_product_branding(branding, id);
+}
+
+exports.edit_product_status = (status, id) => {
+    return repo.edit_product_status(status, id);
+}

@@ -14,6 +14,15 @@ router.get('/billing',adminController.List);
 router.get('/billing/:IdOrder', adminController.details);
 
 router.get('/tables/acc_details/:id', tables.acc_details);
+router.get('/dashboard',adminController.Revenue);
+router.get('notifications/:IdOrder', adminController.details);
+
+
+
+
+
+
+
 router.get('/sign-up', authController.showRegistrationForm);
 
 router.post('/sign-up', authController.register);
@@ -25,12 +34,18 @@ router.post('/sign-in',passport.authenticate('admin-local', {
 router.get('/logout', authController.logout);
 
 router.get('/tables',tables.tables);
+
+router.get('/profile/:id', adminController.getProFile);
+router.post('/profile/:id', adminController.editProfile);
+
+router.get('/tables/edit-product/:ProductID', tables.getEditProduct);
+router.post('/tables/edit-product/:ProductID', tables.editProduct);
+
 router.post('/tables', adminController.manageProduct);
 
 router.get('/profile/:id', adminController.getProFile);
 router.post('/profile/:id', adminController.editProfile);
 router.get('/tables/update-product', adminController.manageProduct);
-router.post('/tables', adminController.manageProduct);
 router.get('/:slug', adminController.get_Pages);
 
 
