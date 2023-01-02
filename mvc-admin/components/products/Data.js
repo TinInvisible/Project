@@ -24,6 +24,7 @@ const imgSrc = [
     },
     {
         page: 'home-page',
+<<<<<<< Updated upstream
         logo:"../assets/img/logo-ct.png",
         team_2: "../assets/img/team-2.jpg",
         logo_spotify: "../assets/img/small-logos/logo-spotify.svg",
@@ -32,6 +33,9 @@ const imgSrc = [
         gb:"../assets/img/icons/flags/GB.png",
         br:"../assets/img/icons/flags/BR.png"
 
+=======
+        logo: '../assets/img/logo-ct.png',
+>>>>>>> Stashed changes
     },
     {
         page: 'notifications',
