@@ -53,14 +53,18 @@ exports.getOrder = async (id) => {
 }
 
 exports.filter = async (date) => {
-    const result =  await db.connection.execute("SELECT * FROM shippingdetail where month(date)  like ?", [`%${date}%`]);
+    const result =  await db.connection.execute("SELECT * FROM shippingdetail where status ='DaGiao' and month(date)  like ?", [`%${date}%`]);
     return result[0];
   }
 
-  exports.filter1 = async (date) => {
-    const result =  await db.connection.execute("SELECT * FROM shippingdetail where year(date)  like ?", [`%${date}%`]);
+exports.filter1 = async (date) => {
+    const result =  await db.connection.execute("SELECT * FROM shippingdetail where  status ='DaGiao' year(date)  like ?", [`%${date}%`]);
     return result[0];
-  }
+}
+
+exports.updateStatus = async(Status,id)=>{
+     await db.connection.execute("update shippingdetail set status = ? where (IdOrder = ?);", [Status,id]);
+}
 
 
 

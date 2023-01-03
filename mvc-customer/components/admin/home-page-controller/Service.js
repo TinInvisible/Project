@@ -62,3 +62,7 @@ exports.filter = (date)=>{
 exports.filter1 = (date)=>{
   return home_page_Repository.filter1(date);
 }
+
+exports.updateStatus = (Status,id)=>{
+  return home_page_Repository.updateStatus(Status,id);
+}
