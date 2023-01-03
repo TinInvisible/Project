@@ -28,9 +28,17 @@
                       <input type="text" class="form-control" name="edit_branding" placeholder="Branding">
                     </div>
 
-                    <div class="input-group input-group-outline mb-3">
+                    {{!-- <div class="input-group input-group-outline mb-3">
                       <input type="text" class="form-control" name="edit_status" placeholder="Status">
-                    </div>
+                    </div> --}}
+                    <br>
+                    Status:
+                    <select name="edit_status" class="rounded">
+                      <option value="On stock">On stock</option>
+                      <option value="Out of stock">Out of stock</option>
+                      <option value="Suspend">Suspend</option>
+                    </select>
+                    <br>
                     
                     {{#if error}}
                     <div class="error">
@@ -46,11 +54,10 @@
                       <button class="btn bg-gradient-primary w-100 my-4 mb-2" name="edit_product" value="delete">Delete product</button>
                     </div>
                     
-                  <a href="/admin/tables">
-                    <button class="btn bg-gradient-primary w-100 my-4 mb-2">
-                      Back to tables
-                    </button>
-                  </a>
+                    <div id="back" class="text-center">
+                      <button class="btn bg-gradient-primary w-100 my-4 mb-2" name="edit_product" value="back">Back to tables</button>
+                    </div>
+                    
 
                   </form>
               </div>

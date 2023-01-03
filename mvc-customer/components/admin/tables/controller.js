@@ -100,6 +100,7 @@ exports.editProduct = async (req, res) => {
     const { edit_branding } = req.body;
     const { edit_status } = req.body;
     const { edit_product } = req.body;
+
     console.log(ProductID);
     console.log(edit_name);
     console.log(edit_category);
@@ -117,11 +118,13 @@ exports.editProduct = async (req, res) => {
             await service.edit_product_status(edit_status, ProductID);
         }
     }
-    else{
+    if (edit_product === "back") {
+        res.redirect('/admin/tables');
+        return;
+    }
+    if (edit_product === "delete") {
         await service.delete_product(ProductID);
     }
-
-
 
     res.redirect('/admin/tables')
 }
