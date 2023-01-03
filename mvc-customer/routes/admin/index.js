@@ -12,6 +12,7 @@ router.get('/', middleware.verify_admin, adminController.get_HomePage);
 router.get('/sign-up', authController.showRegistrationForm);
 
 router.post('/sign-up', authController.register);
+
 router.get('/sign-in', authController.showLoginForm);
 router.post('/sign-in', passport.authenticate('admin-local', {
   successRedirect: '/admin',

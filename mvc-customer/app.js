@@ -13,6 +13,7 @@ const authRouter = require('./components/auth');
 const passport = require('./components/auth/passport');
 const adminRouter = require('./routes/admin');
 const authApiRouter = require('./components/auth/api');
+
 const productApiRouter = require('./components/products/api');
 const db = require('./db');
 
@@ -47,8 +48,7 @@ app.use(passport.authenticate('session'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+
 
 app.use(logger('dev'));
 app.use(express.json());

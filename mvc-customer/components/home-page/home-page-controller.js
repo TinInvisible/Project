@@ -29,7 +29,9 @@ exports.editProfile = async (req, res, next) => {
     const { age } = req.body;
     const { gender } = req.body;
     const { img } = req.body;
-  
+    const { old_pass } = req.body;
+    const { new_pass } = req.body;
+
     if (id) {
         if (name) {
             await service.change_name(name, id);
@@ -39,6 +41,9 @@ exports.editProfile = async (req, res, next) => {
         }
         else if (gender) {
             await service.change_gender(gender, id);
+        }
+        if (old_pass && new_pass) {
+            await service.change_pass(old_pass,new_pass, id);
         }
     }
     res.redirect('/home-page/profile');
@@ -54,12 +59,12 @@ exports.insertShippingDetail = async (req, res) => {
             Price += list_products.products[i].price;
             let product = await product_service.get(parseInt(list_products.products[i].id));
             console.log(list_products.products[i].id);
-            console.log(typeof(list_products.products[i].id));
+            console.log(typeof (list_products.products[i].id));
             let num_purchase = list_products.products[i].quantity + product.Total_purchase;
- 
+
             await service.update_total_purchase(num_purchase, list_products.products[i].id)
         }
-        let day = Year +"-"+Month+"-"+Day;
+        let day = Year + "-" + Month + "-" + Day;
         await service.insertShippingDetail(firstName, lastName, Country, Address, townCity, postCode, Phone, Email, Price, day);
     }
     res.redirect('/home-page/checkout');

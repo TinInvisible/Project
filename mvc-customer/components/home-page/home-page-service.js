@@ -1,8 +1,19 @@
 const { connection } = require('../../db');
 const home_page_Repository = require('./home-page-repo');
-
+const bcrypt = require('bcryptjs');
 exports.change_name = (name, id) => {
     return home_page_Repository.change_name(name, id);
+}
+exports.change_pass = async (old_pass, new_pass, id) => {
+    const user = await home_page_Repository.get(id);
+    if (!user)
+        return null;
+    if (await bcrypt.compare(old_pass, user.password)) {
+        const salt = await bcrypt.genSalt(10);
+        const hash = await bcrypt.hash(new_pass, salt);
+        return home_page_Repository.change_pass(hash, id);
+    }
+    return null;
 }
 exports.change_age = (name, id) => {
     return home_page_Repository.change_age(name, id);
@@ -14,6 +25,6 @@ exports.getID = (id) => home_page_Repository.get(id);
 exports.update_total_purchase = (num, id) => {
     return home_page_Repository.update_total_purchase(num, id);
 }
-exports.insertShippingDetail = (firstName, lastName,Country,Address,townCity, postCode, Phone,Email, price, day) => {
-    return home_page_Repository.insertShippingDetail(firstName, lastName,Country,Address,townCity, postCode, Phone,Email, price, day);
+exports.insertShippingDetail = (firstName, lastName, Country, Address, townCity, postCode, Phone, Email, price, day) => {
+    return home_page_Repository.insertShippingDetail(firstName, lastName, Country, Address, townCity, postCode, Phone, Email, price, day);
 }

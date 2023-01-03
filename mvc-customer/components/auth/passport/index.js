@@ -3,7 +3,7 @@ const LocalStrategy = require('passport-local');
 const authService = require('../authService');
 
 passport.use('customer-local', new LocalStrategy({ usernameField: 'email' }, async function verify(username, password, cb) {
-  console.log("b")
+
   const user = await authService.checkUserCredential(username, password);
   if (user)
     return cb(null, user);
@@ -11,7 +11,7 @@ passport.use('customer-local', new LocalStrategy({ usernameField: 'email' }, asy
 }));
 passport.use('admin-local', new LocalStrategy({ usernameField: 'email' }, async function verify(username, password, cb) {
   const user = await authService.checkUserCredential_admin(username, password);
-  console.log("a")
+
   if (user)
     return cb(null, user);
   return cb(null, false);

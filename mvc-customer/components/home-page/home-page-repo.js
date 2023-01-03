@@ -1,11 +1,17 @@
 const db = require('../../db');
-
 exports.change_name = async (name, id) => {
     await db.connection.execute("UPDATE users SET name = ? WHERE (id = ?);", [name, id]);
+}
+exports.change_name = async (name, id) => {
+    await db.connection.execute("UPDATE users SET name = ? WHERE (id = ?);", [name, id]);
+}
+exports.change_pass = async (name, id) => {
+    await db.connection.execute("UPDATE users SET password = ? WHERE (id = ?);", [name, id]);
 }
 exports.change_age = async (name, id) => {
     await db.connection.execute("UPDATE users SET age = ? WHERE (id = ?);", [name, id]);
 }
+
 exports.change_gender = async (name, id) => {
     await db.connection.execute("UPDATE users SET gender = ? WHERE (id = ?);", [name, id]);
 }
