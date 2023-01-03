@@ -29,8 +29,8 @@ exports.change_gender = (name, id) => {
 }
 exports.getID = (id) => home_page_Repository.get(id);
 
-exports.addProduct = (name, price, shortDes, longDes, category, branding, quantity) => {
-  return home_page_Repository.addProduct(name, price, shortDes, longDes, category, branding, quantity);
+exports.addProduct = (name, price, shortDes, longDes, category, branding, quantity, status) => {
+  return home_page_Repository.addProduct(name, price, shortDes, longDes, category, branding, quantity, status);
 }
 
 exports.deleteProduct = (name, category, branding) => {

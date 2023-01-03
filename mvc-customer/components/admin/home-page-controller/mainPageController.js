@@ -49,11 +49,12 @@ exports.manageProduct = async (req, res) => {
     const { longDes } = req.body;
     const { category_add } = req.body;
     const { branding_add } = req.body;
+    const { status_add } = req.body;
 
 
 
-    if (name_add && price && shortDes && longDes && category_add && branding_add) {
-        await service.addProduct(name_add, price, shortDes, longDes, category_add, branding_add);
+    if (name_add && price && shortDes && longDes && category_add && branding_add && status_add) {
+        await service.addProduct(name_add, price, shortDes, longDes, category_add, branding_add, status_add);
     }
 
 
