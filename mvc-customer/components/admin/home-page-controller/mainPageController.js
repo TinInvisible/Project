@@ -1,19 +1,19 @@
 const service = require('./Service');
 const qs = require('qs');
 
-exports.get_HomePage = (req,res) => {
+exports.get_HomePage = (req, res) => {
 
-    res.render('admin/home-page', {layout: 'layout_admin.hbs'});
+    res.render('admin/home-page', { layout: 'layout_admin.hbs' });
 }
-exports.get_Pages = (req,res) => {
+exports.get_Pages = (req, res) => {
     //res.render('products/list');
-    res.render('admin/' + req.params.slug,{layout: 'layout_admin.hbs'});
+    res.render('admin/' + req.params.slug, { layout: 'layout_admin.hbs' });
 }
 exports.getProFile = async (req, res, next) => {
     const { id } = req.user;
     const user = await service.getID(id);
     if (!user) return next(createError(404));
-    res.render('admin/profile', { user, layout:'layout_admin.hbs' });
+    res.render('admin/profile', { user, layout: 'layout_admin.hbs' });
 }
 
 exports.editProfile = async (req, res, next) => {
@@ -21,8 +21,10 @@ exports.editProfile = async (req, res, next) => {
     const { name } = req.body;
     const { age } = req.body;
     const { gender } = req.body;
+    const { old_pass } = req.body;
+    const { new_pass } = req.body;
     const { img } = req.body;
-  
+
     if (id) {
         if (name) {
             await service.change_name(name, id);
@@ -32,6 +34,9 @@ exports.editProfile = async (req, res, next) => {
         }
         if (gender) {
             await service.change_gender(gender, id);
+        }
+        if (old_pass && new_pass) {
+            await service.change_pass(old_pass, new_pass, id);
         }
     }
     res.redirect('/admin/profile');
@@ -51,7 +56,7 @@ exports.manageProduct = async (req, res) => {
         await service.addProduct(name_add, price, shortDes, longDes, category_add, branding_add);
     }
 
-   
+
 
     // if (Clothing) {
     //     await service.filter_category(Clothing);
@@ -69,68 +74,68 @@ exports.manageProduct = async (req, res) => {
 
 
 exports.List = async (req, res) => {
-    
-    const {status} = req.query;
-    const {time} = req.query;
+
+    const { status } = req.query;
+    const { time } = req.query;
 
 
-    let order =[];
+    let order = [];
 
 
-    if(status === "DaGiao"){
+    if (status === "DaGiao") {
         order = await service.getOrderListByStatus();
 
     }
-    else if(status ==="ChuaGiao"){
+    else if (status === "ChuaGiao") {
         order = await service.getOrderListByStatus1();
- 
+
     }
-    else if(time ==="asc"){
+    else if (time === "asc") {
         order = await service.getOrderListByTimeAsc();
     }
-    else if(time ==="desc"){
+    else if (time === "desc") {
         order = await service.getOrderListByTimeDesc();
     }
-    else{
-    order =  await service.getOrderList();
+    else {
+        order = await service.getOrderList();
     }
- 
-    res.render('admin/billing',{order, layout:'layout_admin.hbs'});
+
+    res.render('admin/billing', { order, layout: 'layout_admin.hbs' });
 }
 
 
 exports.Revenue = async (req, res) => {
-    const {date:dateFilter}= req.query;
-    const {date1: dateFilter1} = req.query;
+    const { date: dateFilter } = req.query;
+    const { date1: dateFilter1 } = req.query;
     let revenue = [];
-     if (dateFilter){
-     revenue = await service.filter(dateFilter);
-     console.log(revenue);
-     }
-     if (dateFilter1){
-        revenue = await service.filter1(dateFilter1);
-     }
-
-     else{
-    revenue = await service.getOrderList();
+    if (dateFilter) {
+        revenue = await service.filter(dateFilter);
         console.log(revenue);
-     }
- 
-     res.render('admin/dashboard',{revenue, layout:'layout_admin.hbs'});
+    }
+    if (dateFilter1) {
+        revenue = await service.filter1(dateFilter1);
+    }
+
+    else {
+        revenue = await service.getOrderList();
+        console.log(revenue);
+    }
+
+    res.render('admin/dashboard', { revenue, layout: 'layout_admin.hbs' });
 
 }
 
 
 exports.updateStatus = async (req, res, next) => {
-    const {IdOrder}= req.params;
-  
-    const {statusUpdate} = req.body;
+    const { IdOrder } = req.params;
 
-  
-    await service.updateStatus(statusUpdate,IdOrder);
-   
+    const { statusUpdate } = req.body;
+
+
+    await service.updateStatus(statusUpdate, IdOrder);
+
     res.redirect('/admin/billing')
-    
+
 }
 
 
@@ -138,12 +143,12 @@ exports.updateStatus = async (req, res, next) => {
 exports.details = async (req, res, next) => {
     const { IdOrder } = req.params;
     let orders = [];
-  
-  
+
+
     orders = await service.getAll();
-    
-  
+
+
     const order = await service.getOrder(IdOrder);
-    
-    res.render('admin/notifications', {order, layout:'layout_admin.hbs'});
-  };
+
+    res.render('admin/notifications', { order, layout: 'layout_admin.hbs' });
+};
