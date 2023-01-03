@@ -15,7 +15,7 @@ exports.tables = async (req, res) => {
     const { email_customer } = req.query;
     const { sort_customer } = req.query;
 
-    const { sort_product} = req.query;
+    const { sort_product } = req.query;
     // filter
     const { category } = req.query;
     const { branding } = req.query;
@@ -63,16 +63,16 @@ exports.tables = async (req, res) => {
     else if (branding) {
         products = await service.filter_branding(branding);
     }
-    if(sort_product == "asc_price"){
+    if (sort_product == "asc_price") {
         products = service.sort_asc(products, 'Price');
     }
-    else if(sort_product == "dsc_price"){
+    else if (sort_product == "dsc_price") {
         products = service.sort_dsc(products, 'Price');
     }
-    else if(sort_product == "asc_purchase"){
+    else if (sort_product == "asc_purchase") {
         products = service.sort_asc(products, 'Total_purchase');
     }
-    else if(sort_product == "dsc_purchase"){
+    else if (sort_product == "dsc_purchase") {
         products = service.sort_dsc(products, 'Total_purchase');
     }
     res.render('admin/tables', { admins, customers, products, layout: 'layout_admin.hbs' })
@@ -82,7 +82,7 @@ exports.acc_details = async (req, res, next) => {
     const { id } = req.params;
     const acc = await service.getID(id, 'user_admin');
     const role = 'Admin'
-    res.render('admin/acc_details', { acc,role, layout: 'layout_admin.hbs' });
+    res.render('admin/acc_details', { acc, role, layout: 'layout_admin.hbs' });
 }
 exports.acc_details_customer = async (req, res, next) => {
     const { id } = req.params;
@@ -90,8 +90,36 @@ exports.acc_details_customer = async (req, res, next) => {
     const role = 'Customer'
     res.render('admin/acc_details', { acc, role, layout: 'layout_admin.hbs' });
 }
+exports.manageProduct = async (req, res) => {
+    const { name_add } = req.body;
+    const { price } = req.body;
+    const { shortDes } = req.body;
+    const { longDes } = req.body;
+    const { category_add } = req.body;
+    const { branding_add } = req.body;
+    const { status_add } = req.body;
+    const { add_product } = req.body;
 
-exports.editProduct = async (req, res) => { 
+    if (add_product) {
+
+        if (name_add && price && shortDes && longDes && category_add && branding_add && status_add) {
+            await service.addProduct(name_add, price, shortDes, longDes, category_add, branding_add, status_add);
+        }
+        else {
+            let admins = await service.getAll_admin();
+            let customers = await service.getAll_customer();
+            let products = await products_service.getAll();
+            res.render('admin/tables', { admins, customers, products, error: 'Please enter full attribute', layout: 'layout_admin.hbs' });
+            return;
+        }
+    }
+
+    res.redirect('/admin/tables');
+
+};
+
+
+exports.editProduct = async (req, res) => {
     const { ProductID } = req.params;
 
 
@@ -105,6 +133,10 @@ exports.editProduct = async (req, res) => {
     console.log(edit_name);
     console.log(edit_category);
     if (edit_product === "edit") {
+        if(!edit_name){
+            res.render('admin/edit-product', {error: 'Your input is empty', layout:'layout_admin.hbs'});
+            return;
+        }
         if (edit_name) {
             await service.edit_product_name(edit_name, ProductID);
         }

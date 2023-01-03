@@ -47,7 +47,9 @@ exports.edit_product_status = async (status, id) => {
   const result = await db.connection.execute("UPDATE productdetail SET status = ? WHERE ProductID = ?", [status, id]);
 
 }
+exports.addProduct = async (name, price, shortDes, longDes, category, branding) => {
+  const result = await db.connection.execute("INSERT INTO productdetail (Name, Price, ShortDescription, LongDescription, Category, Branding, Total_purchase) VALUES (?, ?, ?, ?, ?, ?, ?)", [name, price, shortDes, longDes, category, branding, 0])
+}
 exports.deleteProduct = async (id) => {
   const result = await db.connection.execute("DELETE FROM productdetail WHERE ProductID = ?", [id]);
-
 }

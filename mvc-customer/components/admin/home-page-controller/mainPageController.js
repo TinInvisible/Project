@@ -1,6 +1,6 @@
 const service = require('./Service');
 const qs = require('qs');
-
+const bcrypt = require('bcryptjs');
 exports.get_HomePage = (req, res) => {
 
     res.render('admin/home-page', { layout: 'layout_admin.hbs' });
@@ -23,56 +23,53 @@ exports.editProfile = async (req, res, next) => {
     const { gender } = req.body;
     const { old_pass } = req.body;
     const { new_pass } = req.body;
-    const { img } = req.body;
-
+    const { edit } = req.body;
     if (id) {
-        if (name) {
-            await service.change_name(name, id);
+        if (edit === "edit_profile") {
+            if (name == req.user.name) {
+                res.render('admin/profile', { error: 'Your input is the same with the old one', layout: 'layout_admin.hbs' });
+                return;
+            }
+            if (!name && !age && !gender) {
+                res.render('admin/profile', { error: 'Yout input is empty', layout: 'layout_admin.hbs' });
+                return;
+            }
+            else {
+                if (name)
+                    await service.change_name(name, id);
+                if (age)
+                    await service.change_age(age, id);
+                if (gender)
+                    await service.change_gender(gender, id);
+            }
+
         }
-        if (age) {
-            await service.change_age(age, id);
-        }
-        if (gender) {
-            await service.change_gender(gender, id);
-        }
-        if (old_pass && new_pass) {
+        if (edit === "change_pass") {
+            if (!old_pass) {
+                res.render('admin/profile', { error1: 'Enter old password', layout: 'layout_admin.hbs' });
+                return;
+            }
+            else {
+                const user = await service.getID(id);
+                if (!await bcrypt.compare(old_pass, user.password)) {
+                    res.render('admin/profile', { error1: 'Incorrect old password', layout: 'layout_admin.hbs' });
+                    return;
+                }
+            }
+            if (!new_pass) {
+                res.render('admin/profile', { error2: 'Enter new password', layout: 'layout_admin.hbs' });
+                return;
+            }
+            if (new_pass.length < 6) {
+                res.render('admin/profile', { error2: 'Your password must contain at least 6 character', layout: 'layout_admin.hbs' });
+                return;
+            }
             await service.change_pass(old_pass, new_pass, id);
+
         }
     }
     res.redirect('/admin/profile');
 }
-
-exports.manageProduct = async (req, res) => {
-    const { name_add } = req.body;
-    const { price } = req.body;
-    const { shortDes } = req.body;
-    const { longDes } = req.body;
-    const { category_add } = req.body;
-    const { branding_add } = req.body;
-    const { status_add } = req.body;
-
-
-
-    if (name_add && price && shortDes && longDes && category_add && branding_add && status_add) {
-        await service.addProduct(name_add, price, shortDes, longDes, category_add, branding_add, status_add);
-    }
-
-
-
-    // if (Clothing) {
-    //     await service.filter_category(Clothing);
-    // }
-    // else if (Shoes) await service.filter_category(Shoes);
-    // else if (Bags) await service.filter_category(Bags);
-    // else if (Accessory) await service.filter_category(Accessory);
-    // else if (LuoisVuitton) await service.filter_branding(LuoisVuitton);
-    // else if (Hermes) await service.filter_branding(Hermes);
-    // else if (Gucci) await service.filter_branding(Hermes);
-    // else if (Channel) await service.filter_branding(Channel);
-    res.redirect('/admin/tables');
-
-};
-
 
 exports.List = async (req, res) => {
 
@@ -143,12 +140,6 @@ exports.updateStatus = async (req, res, next) => {
 
 exports.details = async (req, res, next) => {
     const { IdOrder } = req.params;
-    let orders = [];
-
-
-    orders = await service.getAll();
-
-
     const order = await service.getOrder(IdOrder);
 
     res.render('admin/notifications', { order, layout: 'layout_admin.hbs' });

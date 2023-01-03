@@ -341,21 +341,30 @@
                   <hr class="horizontal gray-light my-4">
                   <form method="post">
                     <ul class="list-group">
-                      <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full
-                          Name:</strong>
-                        <input type="text" name="name" placeholder="{{user.name}}" class="rounded">
+                      {{#if error}}
+                      <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+                        <p>{{error}}</p>
                       </li>
+                      {{/if}}
+                    </ul>
+                    <li class="list-group-item border-0 ps-0 pt-0 text-sm my-3"><strong class="text-dark">Full
+                        Name:</strong>
+                      <input type="text" name="name" placeholder="{{user.name}}" class="rounded">
+                    </li>
 
-                      <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp;
-                        {{user.email}}</li>
-                      <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Gender:</strong>
-                        <input type="text" name="gender" placeholder="{{user.gender}}" class="rounded">
-                      </li>
-                      <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Age: </strong>
-                        <input type="text" name="age" placeholder="{{user.age}}" class="rounded">
-                      </li>
-                      <li class="list-group-item border-0 ps-0 text-sm"><button type="submit" class="btn btn-light">Edit
-                          Profile</button></li>
+                    <li class="list-group-item border-0 ps-0 text-sm my-3"><strong class="text-dark">Email:</strong>
+                      &nbsp;
+                      {{user.email}}
+                    </li>
+                    <li class="list-group-item border-0 ps-0 text-sm my-3"><strong class="text-dark">Gender:</strong>
+                      <input type="text" name="gender" placeholder="{{user.gender}}" class="rounded">
+                    </li>
+                    <li class="list-group-item border-0 ps-0 text-sm my-3"><strong class="text-dark">Age: </strong>
+                      <input type="text" name="age" placeholder="{{user.age}}" class="rounded">
+                    </li>
+                    <li class="list-group-item border-0 ps-0 text-sm my-3"><button type="submit" name="edit"
+                        value="edit_profile" class="btn btn-light">Edit
+                        Profile</button></li>
                     </ul>
                   </form>
                 </div>
@@ -364,16 +373,22 @@
                   <hr class="horizontal gray-light my-4">
                   <form method="post">
                     <ul class="list-group">
-                      <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">
+                      <li class="list-group-item border-0 ps-0 pt-0 text-sm my-3"><strong class="text-dark">
                           Old password:</strong>
                         <input type="password" name="old_pass" class="rounded">
+                        {{#if error1}}
+                        <p>{{error1}}</p>
+                        {{/if}}
                       </li>
-                      <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">
+                      <li class="list-group-item border-0 ps-0 pt-0 text-sm my-3"><strong class="text-dark">
                           New password:</strong>
                         <input type="password" name="new_pass" class="rounded">
+                        {{#if error2}}
+                        <p>{{error2}}</p>
+                        {{/if}}
                       </li>
-                      <li class="list-group-item border-0 ps-0 text-sm"><button type="submit"
-                          class="btn btn-light">Change pasword</button></li>
+                      <li class="list-group-item border-0 ps-0 text-sm my-3"><button type="submit" class="btn btn-light"
+                          name="edit" value="change_pass">Change pasword</button></li>
                     </ul>
                   </form>
                 </div>

@@ -70,3 +70,6 @@ exports.edit_product_status = (status, id) => {
 exports.delete_product = (id) => {
     return repo.deleteProduct(id);
 }
+exports.addProduct = (name, price, shortDes, longDes, category, branding, quantity, status) => {
+    return repo.addProduct(name, price, shortDes, longDes, category, branding, quantity, status);
+  }

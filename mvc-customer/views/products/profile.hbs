@@ -63,7 +63,11 @@
               <div class="col-sm-9">
                 <form method="post">
                   <input type="text" name="name" placeholder="{{user.name}}" class="but">
-                  <button type="submit" class="btn-light border border-black rounded">Change</button>
+                  <button type="submit" name="edit" value="edit_name"
+                    class="btn-light border border-black rounded">Change</button>
+                  {{#if error}}
+                  <p>{{error}}</p>
+                  {{/if}}
                 </form>
               </div>
             </div>
@@ -84,7 +88,11 @@
               <div class="col-sm-9">
                 <form method="post">
                   <input type="text" name="age" placeholder="{{user.age}}">
-                  <button type="submit" class="btn-light border border-black rounded">Change</button>
+                  <button type="submit" name="edit" value="edit_age"
+                    class="btn-light border border-black rounded">Change</button>
+                  {{#if error1}}
+                  <p>{{error1}}</p>
+                  {{/if}}
                 </form>
               </div>
             </div>
@@ -96,7 +104,11 @@
               <div class="col-sm-9">
                 <form method="post">
                   <input type="text" name="gender" placeholder="{{user.gender}}">
-                  <button type="submit" class="btn-light border border-black rounded">Change</button>
+                  <button type="submit" name="edit" value="edit_gender"
+                    class="btn-light border border-black rounded">Change</button>
+                  {{#if error2}}
+                  <p>{{error2}}</p>
+                  {{/if}}
                 </form>
               </div>
             </div>
@@ -113,19 +125,27 @@
                 <div class="col-sm-3">
                   <p class="mb-0">Old password</p>
                 </div>
-                <div class="col-sm-9">
+                <div class="col-sm-5">
                   <input type="password" name="old_pass" class="but">
                 </div>
+                {{#if error3}}
+                <div class="col-sm-4">{{error3}}</div>
+                {{/if}}
+
               </div>
               <hr>
               <div class="row">
                 <div class="col-sm-3">
                   <p class="mb-0">New password</p>
                 </div>
-                <div class="col-sm-9">
+                <div class="col-sm-5">
                   <input type="password" name="new_pass" class="but">
-                  <button type="submit" class="btn-light border border-black rounded">Change</button>
+                  <button type="submit" name="edit" value="change_pass"
+                    class="btn-light border border-black rounded">Change</button>
                 </div>
+                {{#if error4}}
+                <div class="col-sm-4">{{error4}}</div>
+                {{/if}}
               </div>
             </div>
           </div>

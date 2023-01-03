@@ -5,15 +5,10 @@ exports.getAll = () => {
   return imgSrc;
 };
 exports.change_pass = async (old_pass, new_pass, id) => {
-  const user = await home_page_Repository.get(id);
-  if (!user)
-      return null;
-  if (await bcrypt.compare(old_pass, user.password)) {
+
       const salt = await bcrypt.genSalt(10);
       const hash = await bcrypt.hash(new_pass, salt);
       return home_page_Repository.change_pass(hash, id);
-  }
-  return null;
 }
 exports.getByPage = (page) => {
   return imgSrc.find((img_src) => img_src.page === page);
@@ -29,9 +24,7 @@ exports.change_gender = (name, id) => {
 }
 exports.getID = (id) => home_page_Repository.get(id);
 
-exports.addProduct = (name, price, shortDes, longDes, category, branding, quantity, status) => {
-  return home_page_Repository.addProduct(name, price, shortDes, longDes, category, branding, quantity, status);
-}
+
 
 exports.deleteProduct = (name, category, branding) => {
   return home_page_Repository.deleteProduct(name, category, branding);

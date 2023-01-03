@@ -5,15 +5,10 @@ exports.change_name = (name, id) => {
     return home_page_Repository.change_name(name, id);
 }
 exports.change_pass = async (old_pass, new_pass, id) => {
-    const user = await home_page_Repository.get(id);
-    if (!user)
-        return null;
-    if (await bcrypt.compare(old_pass, user.password)) {
-        const salt = await bcrypt.genSalt(10);
-        const hash = await bcrypt.hash(new_pass, salt);
-        return home_page_Repository.change_pass(hash, id);
-    }
-    return null;
+
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(new_pass, salt);
+    return home_page_Repository.change_pass(hash, id);
 }
 exports.change_age = (name, id) => {
     return home_page_Repository.change_age(name, id);

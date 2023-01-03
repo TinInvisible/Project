@@ -38,11 +38,10 @@ router.get('/tables',  middleware.verify_admin,tables.tables);
 router.get('/tables/edit-product/:ProductID', tables.getEditProduct);
 router.post('/tables/edit-product/:ProductID', tables.editProduct);
 
-router.post('/tables',middleware.verify_admin, adminController.manageProduct);
+router.post('/tables',middleware.verify_admin, tables.manageProduct);
 
 router.get('/profile',middleware.verify_admin, adminController.getProFile);
 router.post('/profile',middleware.verify_admin, adminController.editProfile);
-router.get('/tables/update-product',middleware.verify_admin, adminController.manageProduct);
 router.get('/:slug',middleware.verify_admin, adminController.get_Pages);
 
 

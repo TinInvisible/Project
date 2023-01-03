@@ -300,7 +300,7 @@
                       <td class="align-middle">
                         <a href="/admin/tables/acc_details_admin/{{id}}" class="text-secondary font-weight-bold text-xs"
                           data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
+                          Details
                         </a>
                       </td>
                     </tr>
@@ -380,7 +380,7 @@
                         <a href="/admin/tables/acc_details_customer/{{id}}"
                           class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
                           data-original-title="Edit user">
-                          Edit
+                          Details
                         </a>
                       </td>
                     </tr>
@@ -407,6 +407,11 @@
                     <tr>
                       <th>
                         <form method="post">
+                          {{#if error}}
+                          <p>{{error}}</p>
+                          <br>
+                          {{/if}}
+           
                           Create new product:
                           <br>
                           Name:
@@ -444,7 +449,7 @@
                             <option value="Suspend">Suspend</option>
                           </select>
                           <br>
-                          <button type="submit" class="btn btn-light">Add</button>
+                          <button type="submit" name="add_product" value="add_product" class="btn btn-light">Add</button>
                         </form>
                       </th>
 

@@ -16,9 +16,7 @@ exports.get = async (id) => {
 exports.change_pass = async (name, id) => {
     await db.connection.execute("UPDATE user_admin SET password = ? WHERE (id = ?);", [name, id]);
 }
-exports.addProduct = async (name, price, shortDes, longDes, category, branding) => {
-    const result = await db.connection.execute("INSERT INTO productdetail (Name, Price, ShortDescription, LongDescription, Category, Branding, Total_purchase) VALUES (?, ?, ?, ?, ?, ?, ?)", [name, price, shortDes, longDes, category, branding, 0])
-}
+
 
 
 
