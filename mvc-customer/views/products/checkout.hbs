@@ -67,7 +67,10 @@
                     <form method="post">
       
                         <h6 class="checkout__title">Shipping Details</h6>
-
+                        {{#if notice}}
+                        <h3 class="my-3">{{notice}}</h3>
+                        <br>
+                        {{/if}}
                         <div class="row">
                             <div class="col-lg-6">
 
@@ -153,7 +156,7 @@
                             {{error}}
                         </div>
                         {{/if}}
-                        <button class="site-btn">PLACE ORDER</button>
+                        <button class="site-btn" name="checkout" value="press">PLACE ORDER</button>
                     </form>
                 </div>
             </div>
