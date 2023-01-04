@@ -16,7 +16,9 @@ exports.get = async (id) => {
 exports.change_pass = async (name, id) => {
     await db.connection.execute("UPDATE user_admin SET password = ? WHERE (id = ?);", [name, id]);
 }
-
+exports.addProduct = async (name, price, shortDes, longDes, category, branding, status) => {
+    const result = await db.connection.execute("INSERT INTO productdetail (Name, Price, ShortDescription, LongDescription, Category, Branding, Total_purchase) VALUES (?, ?, ?, ?, ?, ?, ?)", [name, price, shortDes, longDes, category, branding, status])
+}
 
 
 
@@ -58,7 +60,7 @@ exports.filter = async (date) => {
   }
 
 exports.filter1 = async (date) => {
-    const result =  await db.connection.execute("SELECT * FROM shippingdetail where  status ='DaGiao' year(date)  like ?", [`%${date}%`]);
+    const result =  await db.connection.execute("SELECT * FROM shippingdetail where  status ='DaGiao' and year(date)  like ?", [`%${date}%`]);
     return result[0];
 }
 
